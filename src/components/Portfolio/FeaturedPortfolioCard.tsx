@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import urlFor from "../../../sanity/config/urlFor";
-import { FeaturedProject } from "../../../types/HomePage";
+import { Project } from "../../../types/Project";
 
 type Props = {
-  item: FeaturedProject;
+  item: Project;
 };
 
 const FeaturedPortfolioCard = ({ item: project }: Props) => {
@@ -12,7 +12,7 @@ const FeaturedPortfolioCard = ({ item: project }: Props) => {
     <Link href={`/projects/${project?.slug}`}>
       <div className="relative lg:h-[530px] h-[269px]">
         <Image
-          src={urlFor(project?.coverImage).url()}
+          src={urlFor(project?.mainImage).url()}
           fill
           alt="feature-image"
           loading="lazy"

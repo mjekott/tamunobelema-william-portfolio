@@ -1,15 +1,21 @@
-export interface TypeHomePage {
-  featuredProjects: FeaturedProject[];
+import { Project } from "./Project";
+
+export interface HomePageData {
+  homeData: HomeData;
+  projects: Project[];
+}
+
+export interface HomeData {
   mainImage: string;
   testimonials: Testimonial[];
 }
 
 export interface FeaturedProject {
-  coverImage?: string;
-  description?: string;
-  slug?: string;
+  coverImage: string;
+  description: null | string;
+  publishedAt: Date | null;
+  slug: string;
   title: string;
-  publishedAt: Date;
 }
 
 export interface Testimonial {

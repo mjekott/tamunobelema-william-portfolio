@@ -1,11 +1,25 @@
-import { PortableTextBlock } from "sanity";
+export interface IProjectDetails {
+  current: Project;
+  next: { slug: string } | null;
+  previous: { slug: string } | null;
+}
 
 export type Project = {
-  _id: string;
-  _createdAt: Date;
-  name: string;
+  images: Image[];
+  mainImage: string;
+  publishedAt: Date;
   slug: string;
-  image: string;
-  url: string;
-  content: PortableTextBlock[];
+  title: string;
+  description: string;
 };
+
+export interface Image {
+  _key: string;
+  _type: string;
+  asset: Asset;
+}
+
+export interface Asset {
+  _ref: string;
+  _type: string;
+}

@@ -9,7 +9,7 @@ import Header from "@/layout/Header/Header";
 import { motion } from "framer-motion";
 import { InferGetStaticPropsType } from "next";
 import { getHomePage } from "../../sanity/sanity-utils";
-import { TypeHomePage } from "../../types/HomePage";
+import { HomePageData } from "../../types/HomePage";
 
 const testimonialBreakPoint = {
   640: {
@@ -20,7 +20,11 @@ const testimonialBreakPoint = {
 export default function Home({
   homePageData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { featuredProjects, testimonials, mainImage } = homePageData;
+  const {
+    homeData: { testimonials },
+    projects,
+  } = homePageData;
+  console.log(projects);
 
   return (
     <motion.div
@@ -34,7 +38,7 @@ export default function Home({
       <Hero />
       <FeatureSwiperList
         prefix="projects"
-        data={featuredProjects || []}
+        data={projects || []}
         title="Projects"
         component={FeaturedPortfolioCard}
       />
@@ -49,13 +53,13 @@ export default function Home({
         breakPoints={testimonialBreakPoint}
       />
 
-      <Footer mainImage={mainImage} />
+      <Footer />
     </motion.div>
   );
 }
 
 export async function getStaticProps() {
-  const homePageData: TypeHomePage = await getHomePage();
+  const homePageData: HomePageData = await getHomePage();
   return {
     props: {
       homePageData,

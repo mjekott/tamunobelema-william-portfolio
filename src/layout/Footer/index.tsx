@@ -2,15 +2,14 @@ import { FooterLinks } from "@/assets/data/FooterLinks";
 import userImage from "@/assets/images/userImage.png";
 import Image from "next/image";
 import Link from "next/link";
-import urlFor from "../../../sanity/config/urlFor";
 
-const Footer = ({ mainImage }: FooterProps) => {
+const Footer = () => {
   return (
     <footer className="container p-4 mt-auto">
       <div className="flex border-t border-b border-[#292929] py-10 lg:py-32">
         <div className="mr-6 md:mr-16 lg:mr-[120px] relative">
           <Image
-            src={urlFor(mainImage).url() || userImage}
+            src={userImage}
             className="grayscale"
             height={264}
             width={264}
@@ -72,7 +71,3 @@ const Footer = ({ mainImage }: FooterProps) => {
 };
 
 export default Footer;
-
-type FooterProps = {
-  mainImage: string;
-};
