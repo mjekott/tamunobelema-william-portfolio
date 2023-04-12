@@ -5,7 +5,7 @@ import Link from "next/link";
 const DesktopNavigation = () => {
   return (
     <div className="h-[10vh] hidden lg:flex  top-0 w-full ">
-      <div className="container text-base h-full flex justify-between items-center">
+      <div className="container p-4 text-base h-full flex justify-between items-center">
         <ul className="flex items-center space-x-8">
           <li className="hover:opacity-75 ">
             <Link href="/articles">Articles</Link>

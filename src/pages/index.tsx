@@ -1,10 +1,27 @@
+import FeatureSwiperList from "@/components/FeatureSwiperList";
+import FeaturedPortfolioCard from "@/components/Portfolio/FeaturedPortfolioCard";
+import TestimonialCard from "@/components/Testimonial/TestimonailCard";
 import About from "@/features/homepage/components/About";
+import Brand from "@/features/homepage/components/Brand";
 import Hero from "@/features/homepage/components/Hero/Hero";
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
 import { motion } from "framer-motion";
+import { InferGetStaticPropsType } from "next";
+import { getHomePage } from "../../sanity/sanity-utils";
+import { TypeHomePage } from "../../types/HomePage";
 
-export default function Home() {
+const testimonialBreakPoint = {
+  640: {
+    slidesPerView: 2,
+  },
+};
+
+export default function Home({
+  homePageData,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { featuredProjects, testimonials, mainImage } = homePageData;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -15,9 +32,33 @@ export default function Home() {
     >
       <Header />
       <Hero />
+      <FeatureSwiperList
+        prefix="projects"
+        data={featuredProjects || []}
+        title="Projects"
+        component={FeaturedPortfolioCard}
+      />
 
       <About />
-      <Footer />
+      <Brand />
+      <FeatureSwiperList
+        prefix="testimonial"
+        data={testimonials || []}
+        title="Feedback From Our Clients"
+        component={TestimonialCard}
+        breakPoints={testimonialBreakPoint}
+      />
+
+      <Footer mainImage={mainImage} />
     </motion.div>
   );
+}
+
+export async function getStaticProps() {
+  const homePageData: TypeHomePage = await getHomePage();
+  return {
+    props: {
+      homePageData,
+    },
+  };
 }

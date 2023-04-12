@@ -4,6 +4,6 @@
 
 @layer components {
   .icon-button {
-    @apply bg-white transition-all duration-500 ease-in-out rounded-full hover:text-white  hover:bg-transparent border border-white h-8 w-8 lg:h-12 lg:w-12  text-black flex justify-center items-center;
+    @apply bg-white transition-all disabled:bg-transparent disabled:text-gray-50 disabled:cursor-not-allowed duration-500 ease-in-out rounded-full hover:text-white  hover:bg-transparent border-2 border-white h-8 w-8 lg:h-12 lg:w-12  text-black flex justify-center items-center;
   }
 }

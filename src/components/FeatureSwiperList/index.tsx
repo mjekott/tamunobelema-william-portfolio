@@ -1,4 +1,3 @@
-import useIsDesktop from "@/utils/useIsDesktop";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,26 +6,41 @@ import "swiper/swiper.min.css";
 type Props<T> = {
   data: T[];
   title: string;
-  component: React.ComponentType<
-    React.PropsWithChildren<IntrinsicAttributes & T>
-  >;
+  component: React.ComponentType<React.PropsWithChildren<any & T>>;
+  breakPoints?: any;
+  prefix: string;
 };
 
-const FeatureSwiperList = <T,>({ component: Component, data }: Props<T>) => {
-  const { isDesktop } = useIsDesktop();
+const defaultBreakpoints = {
+  640: {
+    slidesPerView: 2,
+  },
+  768: {
+    slidesPerView: 3,
+  },
+};
 
+const FeatureSwiperList = <T,>({
+  component: Component,
+  data,
+  title,
+  breakPoints = defaultBreakpoints,
+  prefix,
+}: Props<T>) => {
   if (data && data.length === 0) return null;
 
   return (
     <div className="container p-4">
-      <div className="flex justify-between items-center mb-5 lg:mb-12 py-5">
-        <h2 className="text-3xl lg:text-[100px] font-semibold">Portfolio</h2>
+      <div className="flex justify-between items-center mb-5 gap-5 lg:mb-12 py-5">
+        <h2 className="text-3xl lg:text-[100px] lg:leading-[110px] font-semibold">
+          {title}
+        </h2>
 
         <div className="flex items-center gap-5">
-          <button className="icon-button  button-prev-slide disabled:cursor-not-allowed">
+          <button className={`icon-button  button-${prefix}-prev-slide`}>
             <ChevronLeftIcon className=" w-4 h-4 " />
           </button>
-          <button className="icon-button  button-next-slide disabled:cursor-not-allowed">
+          <button className={`icon-button  button-${prefix}-next-slide`}>
             <ChevronRightIcon className=" w-4 h-4 " />
           </button>
         </div>
@@ -34,24 +48,17 @@ const FeatureSwiperList = <T,>({ component: Component, data }: Props<T>) => {
       <Swiper
         modules={[Navigation]}
         navigation={{
-          nextEl: ".button-next-slide",
-          prevEl: ".button-prev-slide",
+          nextEl: `.button-${prefix}-next-slide`,
+          prevEl: `.button-${prefix}-prev-slide`,
         }}
         spaceBetween={50}
         className="mySwiper"
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-          },
-          768: {
-            slidesPerView: 3,
-          },
-        }}
+        breakpoints={breakPoints}
       >
         {data &&
           data.map((item, index) => (
             <SwiperSlide key={index}>
-              <Component {...item} />
+              <Component item={item} />
             </SwiperSlide>
           ))}
       </Swiper>
