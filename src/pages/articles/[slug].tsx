@@ -21,10 +21,11 @@ const ArticleDetailPage = ({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.75, ease: "easeInOut" }}
       exit={{ opacity: 0 }}
-      className="min-h-screen container p-4 flex flex-col relative"
+      className="min-h-screen container p-4 flex flex-col"
     >
-      <SEO title={`Tamunobelema William | ${article.title}`} />
       <BackButton handleClose={handleBack} />
+      <SEO title={`Tamunobelema William | ${article.title}`} />
+
       <BlogContent {...article} />
       <Footer />
     </motion.div>
