@@ -35,7 +35,7 @@ const Hero = () => {
             Tamunobelema <br /> William - Design <br /> Storyteller.
           </p>
         </div>
-        <div className="justify-end lg:justify-start mt-5 lg:mt-0  lg:pl-[300px] flex-wrap gap-5 lg:gap-20  z-10 py-0 lg:py-28 flex">
+        <div className="justify-end  mt-5 lg:mt-0   flex-wrap gap-5 lg:gap-20  z-10 py-0 lg:py-28 flex">
           {services.map((el, idx) => {
             return (
               <div

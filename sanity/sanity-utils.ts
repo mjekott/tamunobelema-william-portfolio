@@ -38,6 +38,8 @@ export async function getProject(slug: string): Promise<IProjectDetails> {
 
 export async function getHomePage(): Promise<HomePageData> {
   const homePageRequest = groq`*[_type=='homePage']{
+    about,
+    process,
     testimonials[]->{name,comment,relationship,'profilePic':image.asset->url},
   }[0]`;
 

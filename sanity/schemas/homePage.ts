@@ -11,16 +11,25 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "featuredProjects",
-      title: "Featured Projects",
+      name: "about",
+      title: "About",
+      type: "text",
+    }),
+    defineField({
+      name: "process",
+      title: "My Process",
       type: "array",
       of: [
         {
-          type: "reference",
-          to: [{ type: "project" }],
+          type: "object",
+          fields: [
+            { name: "title", type: "string", title: "Title" },
+            { name: "description", type: "text", title: "Description" },
+          ],
         },
       ],
     }),
+
     defineField({
       name: "testimonials",
       title: "Testimonial",

@@ -8,6 +8,8 @@ export interface HomePageData {
 export interface HomeData {
   mainImage: string;
   testimonials: Testimonial[];
+  about: string;
+  process: { description: string; title: string }[];
 }
 
 export interface FeaturedProject {

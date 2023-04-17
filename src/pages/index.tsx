@@ -22,7 +22,7 @@ export default function Home({
   homePageData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const {
-    homeData: { testimonials },
+    homeData: { testimonials, about, process },
     projects,
   } = homePageData;
 
@@ -49,7 +49,7 @@ export default function Home({
         />
       </ProjectContextProvider>
 
-      <About />
+      <About about={about} process={process} />
       <Brand />
       <FeatureSwiperList
         prefix="testimonial"
