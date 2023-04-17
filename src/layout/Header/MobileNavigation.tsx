@@ -2,8 +2,12 @@ import { socialLinks } from "@/assets/data/socialLinks";
 import Logo from "@/components/Logo";
 import useOnClickOutside from "@/utils/useClickOutside";
 import { List, X } from "@phosphor-icons/react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRef, useState } from "react";
+
+const XIcon = motion(X);
+const ListIcon = motion(List);
 
 const MobileNavigation = () => {
   const [showNav, setShowNav] = useState(false);
@@ -12,7 +16,7 @@ const MobileNavigation = () => {
     setShowNav(false);
   });
   return (
-    <div className="h-[10vh] lg:hidden  w-full p-4" ref={mobileRef}>
+    <div className="h-[10vh] lg:hidden  w-full py-4" ref={mobileRef}>
       <div className="container flex flex-col">
         <div className="text-base h-full flex justify-between items-center">
           <Link href="/">
@@ -22,7 +26,29 @@ const MobileNavigation = () => {
             onClick={() => setShowNav((prev) => !prev)}
             className="text-white"
           >
-            {!showNav ? <List size={32} /> : <X size={32} />}
+            {!showNav ? (
+              <ListIcon
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeInOut",
+                }}
+                exit={{ opacity: 0 }}
+                size={32}
+              />
+            ) : (
+              <XIcon
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeInOut",
+                }}
+                exit={{ opacity: 0 }}
+                size={32}
+              />
+            )}
           </button>
         </div>
         <div

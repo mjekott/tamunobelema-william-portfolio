@@ -32,9 +32,7 @@ const FeatureSwiperList = <T,>({
   return (
     <div className="container p-4">
       <div className="flex justify-between items-center mb-5 gap-5 lg:mb-12 py-5">
-        <h2 className="text-3xl lg:text-[100px] lg:leading-[110px] font-semibold">
-          {title}
-        </h2>
+        <h2 className="text-xl lg:text-4xl  font-semibold">{title}</h2>
 
         <div className="flex items-center gap-5">
           <button className={`icon-button  button-${prefix}-prev-slide`}>
@@ -58,7 +56,7 @@ const FeatureSwiperList = <T,>({
         {data &&
           data.map((item, index) => (
             <SwiperSlide key={index}>
-              <Component item={item} />
+              <Component item={item} index={index} />
             </SwiperSlide>
           ))}
       </Swiper>

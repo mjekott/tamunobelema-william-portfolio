@@ -1,8 +1,12 @@
+import Loader from "@/components/Loader";
+import { SEO } from "@/components/SEO";
 import "@/styles/globals.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AnimatePresence } from "framer-motion";
 import type { AppProps } from "next/app";
 
 import localFont from "next/font/local";
+import { useEffect, useState } from "react";
 
 const ppMori = localFont({
   src: [
@@ -38,13 +42,34 @@ const ppMori = localFont({
     },
   ],
 });
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 60,
+    },
+  },
+});
 
 export default function App({ Component, pageProps, router }: AppProps) {
+  const [isLoaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <AnimatePresence initial={false} mode="wait">
-      <main className={ppMori.className}>
-        <Component key={router.pathname} {...pageProps} />
-      </main>
-    </AnimatePresence>
+    <QueryClientProvider client={queryClient}>
+      <SEO />
+      <AnimatePresence>
+        <main className={ppMori.className}>
+          {!isLoaded ? <Loader key="loader" /> : <Component {...pageProps} />}
+        </main>
+      </AnimatePresence>
+    </QueryClientProvider>
   );
 }

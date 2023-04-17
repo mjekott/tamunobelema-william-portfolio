@@ -1,12 +1,13 @@
 import FeatureSwiperList from "@/components/FeatureSwiperList";
 import FeaturedPortfolioCard from "@/components/Portfolio/FeaturedPortfolioCard";
 import TestimonialCard from "@/components/Testimonial/TestimonailCard";
+import ProjectContextProvider from "@/context/ProjectContext";
 import About from "@/features/homepage/components/About";
 import Brand from "@/features/homepage/components/Brand";
 import Hero from "@/features/homepage/components/Hero/Hero";
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
-import { motion } from "framer-motion";
+import { motion as m } from "framer-motion";
 import { InferGetStaticPropsType } from "next";
 import { getHomePage } from "../../sanity/sanity-utils";
 import { HomePageData } from "../../types/HomePage";
@@ -24,24 +25,29 @@ export default function Home({
     homeData: { testimonials },
     projects,
   } = homePageData;
-  console.log(projects);
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.75, ease: "easeInOut" }}
-      exit={{ opacity: 0 }}
+      transition={{
+        duration: 0.8,
+        ease: "easeIn",
+      }}
       className="min-h-screen"
     >
       <Header />
+      <div id="modal" />
+
       <Hero />
-      <FeatureSwiperList
-        prefix="projects"
-        data={projects || []}
-        title="Projects"
-        component={FeaturedPortfolioCard}
-      />
+      <ProjectContextProvider projects={projects || []}>
+        <FeatureSwiperList
+          prefix="projects"
+          data={projects || []}
+          title="Projects"
+          component={FeaturedPortfolioCard}
+        />
+      </ProjectContextProvider>
 
       <About />
       <Brand />
@@ -54,7 +60,7 @@ export default function Home({
       />
 
       <Footer />
-    </motion.div>
+    </m.div>
   );
 }
 

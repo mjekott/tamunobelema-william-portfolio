@@ -7,6 +7,7 @@ export default function Document() {
       <body className="bg-[#111111] p-0 text-white flex flex-col min-h-screen overflow-x-hidden">
         <Main />
         <NextScript />
+        <div id="portal" />
       </body>
     </Html>
   );

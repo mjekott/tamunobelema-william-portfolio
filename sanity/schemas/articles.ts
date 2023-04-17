@@ -20,27 +20,32 @@ export default defineType({
       },
     }),
     defineField({
-      name: "description",
-      title: "Description",
-      type: "string",
-    }),
-    defineField({
-      name: "mainImage",
-      title: "Main image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
     }),
     defineField({
-      name: "body",
-      title: "Body",
-      type: "blockContent",
+      name: "content",
+      title: "Content",
+      type: "array",
+      of: [
+        {
+          type: "block",
+        },
+        {
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              type: "text",
+              name: "alt",
+              title: "Description",
+            },
+          ],
+        },
+      ],
     }),
   ],
 });

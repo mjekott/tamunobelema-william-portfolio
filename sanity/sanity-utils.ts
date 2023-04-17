@@ -8,6 +8,7 @@ const getProjectQuery = groq`*[_type=='project']{
   _createdAt,
   title,
   'slug':slug.current,
+  images,
   'mainImage':mainImage.asset->url,
   url,
   publishedAt,
@@ -44,4 +45,37 @@ export async function getHomePage(): Promise<HomePageData> {
     'homeData': ${homePageRequest},
     'projects':${getProjectQuery},
   }`);
+}
+
+export async function getAllArticles({
+  offset = 0,
+  skip = 10,
+}: {
+  offset?: number;
+  skip?: number;
+}) {
+  const start = offset * skip;
+  const end = start + skip;
+  const result = await client.fetch(
+    groq`*[_type=='article']{
+      _id,
+    title,
+    'slug':slug.current,
+    'date':publishedAt
+  } | order(date desc)[${start}...${end}]`
+  );
+
+  return result;
+}
+
+export async function getArticleBySlug(slug: string) {
+  return client.fetch(
+    groq`*[_type=='article' && slug.current == $slug]{
+    title,
+    'slug':slug.current,
+    'date':publishedAt,
+    content[]{...}
+  }[0]`,
+    { slug }
+  );
 }

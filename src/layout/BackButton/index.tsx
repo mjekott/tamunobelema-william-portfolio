@@ -1,21 +1,12 @@
 import { X } from "@phosphor-icons/react";
-import { useRouter } from "next/router";
 
-const BackButton = () => {
-  const router = useRouter();
-  const handleGoBack = () => {
-    if (
-      window.history.length > 1 &&
-      document.referrer.indexOf(window.location.host) !== -1
-    ) {
-      router.back();
-    } else {
-      router.replace("/");
-    }
-  };
+const BackButton = ({ handleClose }: any) => {
   return (
-    <div className=" py-2 lg:py-4 flex justify-center items-center">
-      <button onClick={handleGoBack}>
+    <div
+      className=" py-2 lg:py-4 flex w-full absolute top-2 justify-center z-10 items-center"
+      id="back-button"
+    >
+      <button onClick={handleClose}>
         <X size="32" />
       </button>
     </div>
