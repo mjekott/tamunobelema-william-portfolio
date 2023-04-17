@@ -8,12 +8,11 @@ const bodyClasses = "text-lg ";
 const RichTextComponents = {
   types: {
     image: ({ value }: any) => {
-      console.log(value);
       return (
-        <div className="relative w-full h-96 m-10 mx-auto">
+        <div className="relative w-full  h-[300px] lg:h-[500px] my-10">
           <Image
-            className="object-contain"
-            src={urlFor(value.asset).height(300).fit("max").url()}
+            className="object-cover"
+            src={urlFor(value.asset).url()}
             alt={value.alt || "blog image"}
             fill
           />

@@ -1,4 +1,5 @@
 import BlogContent from "@/components/Blog/BlogContent";
+import { SEO } from "@/components/SEO";
 import BackButton from "@/layout/BackButton";
 import Footer from "@/layout/Footer";
 import { motion } from "framer-motion";
@@ -20,8 +21,9 @@ const ArticleDetailPage = ({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.75, ease: "easeInOut" }}
       exit={{ opacity: 0 }}
-      className="min-h-screen container p-4"
+      className="min-h-screen container p-4 flex flex-col relative"
     >
+      <SEO title={`Tamunobelema William | ${article.title}`} />
       <BackButton handleClose={handleBack} />
       <BlogContent {...article} />
       <Footer />

@@ -1,4 +1,5 @@
 import BlogCard from "@/components/Blog/BlogCard";
+import { SEO } from "@/components/SEO";
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
 import { useInfiniteQuery } from "@tanstack/react-query";
@@ -46,9 +47,10 @@ const ArticlesPage = ({
       exit={{ opacity: 0 }}
       className=" container p-4 min-h-screen"
     >
+      <SEO title="Tamunobelema William | Articles" />
       <Header />
       <h2 className="text-xl lg:text-4xl  font-semibold my-5">Articles </h2>
-      <div className="grid divide-y divide-gray-700 gap-2">
+      <div className="grid divide-y divide-gray-dark gap-2">
         {data?.pages &&
           !!data.pages.length &&
           data?.pages.map((page) => {

@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         "gray-light": "#B3B3B6",
+        "gray-dark": "#292929",
       },
       listStyleType: {
         square: "square",
