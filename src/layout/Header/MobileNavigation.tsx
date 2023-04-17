@@ -16,6 +16,12 @@ const MobileNavigation = () => {
     setShowNav(false);
   });
 
+  const handleIconClick = () => {
+    setTimeout(() => {
+      setShowNav((prev) => !prev);
+    }, 1000);
+  };
+
   useEffect(() => {
     if (showNav) {
       document.body.style.overflow = "hidden";
@@ -66,7 +72,7 @@ const MobileNavigation = () => {
         >
           <ul
             className="space-y-5 text-lg transform -translate-y-[50%] "
-            onClick={() => setShowNav((prev) => !prev)}
+            onClick={handleIconClick}
           >
             <li className="hover:opacity-75 text-center ">
               <Link href="/articles">Articles</Link>
