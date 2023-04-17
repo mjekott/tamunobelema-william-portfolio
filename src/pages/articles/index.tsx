@@ -45,32 +45,34 @@ const ArticlesPage = ({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.75, ease: "easeInOut" }}
       exit={{ opacity: 0 }}
-      className=" container p-4 min-h-screen"
+      className=" container  min-h-screen"
     >
       <SEO title="Tamunobelema William | Articles" />
       <Header />
-      <h2 className="text-xl lg:text-4xl  font-semibold my-5">Articles </h2>
-      <div className="grid divide-y divide-gray-dark gap-2">
-        {data?.pages &&
-          !!data.pages.length &&
-          data?.pages.map((page) => {
-            return page.map((article: any) => (
-              <BlogCard
-                date={article.date}
-                title={article.title}
-                slug={article.slug}
-                key={article.slug}
-              />
-            ));
-          })}
-      </div>
-      <div ref={ref} className="flex justify-center py-6">
-        {isFetching && (
-          <div
-            className="inline-block relative h-6 w-6 animate-spin rounded-full border-gray-300 border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-            role="status"
-          ></div>
-        )}
+      <div className="p-4">
+        <h2 className="text-xl lg:text-4xl  font-semibold my-5">Articles </h2>
+        <div className="grid divide-y divide-gray-dark gap-2">
+          {data?.pages &&
+            !!data.pages.length &&
+            data?.pages.map((page) => {
+              return page.map((article: any) => (
+                <BlogCard
+                  date={article.date}
+                  title={article.title}
+                  slug={article.slug}
+                  key={article.slug}
+                />
+              ));
+            })}
+        </div>
+        <div ref={ref} className="flex justify-center py-6">
+          {isFetching && (
+            <div
+              className="inline-block relative h-6 w-6 animate-spin rounded-full border-gray-300 border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+              role="status"
+            ></div>
+          )}
+        </div>
       </div>
       <Footer />
     </motion.div>

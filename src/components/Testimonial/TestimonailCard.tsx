@@ -11,7 +11,7 @@ const TestimonialCard = ({ item: testimonial }: Props) => {
   return (
     <div className="overflow-hidden">
       <div>
-        <div className="border-l-2 border-white px-4 mb-8 text-sm lg:text-2xl ">
+        <div className="border-l-2 border-white px-4 mb-8 ">
           {testimonial.comment}
         </div>
         <TestimonialBorderSvg />

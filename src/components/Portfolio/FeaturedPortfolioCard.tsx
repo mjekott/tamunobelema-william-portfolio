@@ -35,7 +35,7 @@ const FeaturedPortfolioCard = ({ item: project, index }: Props) => {
         </div>
         <div className="mt-10">
           <p className="mb-5 text-2xl">{project?.title}</p>
-          <p className="text-gray-light text-lg line-clamp-2">
+          <p className="text-gray-light text-md line-clamp-2">
             {project?.description}
           </p>
           <p className="mt-5 text-2xl">

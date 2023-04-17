@@ -4,7 +4,7 @@ import useOnClickOutside from "@/utils/useClickOutside";
 import { List, X } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const XIcon = motion(X);
 const ListIcon = motion(List);
@@ -15,10 +15,18 @@ const MobileNavigation = () => {
   useOnClickOutside(mobileRef, () => {
     setShowNav(false);
   });
+
+  useEffect(() => {
+    if (showNav) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.classList.add("no-scroll");
+    }
+  }, [showNav]);
   return (
-    <div className="h-[10vh] lg:hidden  w-full py-4" ref={mobileRef}>
-      <div className="container flex flex-col">
-        <div className="text-base h-full flex justify-between items-center">
+    <div className="h-[10vh] lg:hidden py-4  w-full" ref={mobileRef}>
+      <div className=" flex flex-col container">
+        <div className="text-base h-full  flex justify-between items-center">
           <Link href="/">
             <Logo />
           </Link>
@@ -52,12 +60,15 @@ const MobileNavigation = () => {
           </button>
         </div>
         <div
-          className={` p-5 z-40 bg-[#111111] border border-gray-light mt-5 w-full rounded  ${
+          className={` p-5 z-40 flex justify-center items-center flex-col  h-[90vh] overflow-hidden bg-[#111111]  mt-5 w-full rounded  ${
             !showNav && "hidden opacity-0"
           }`}
         >
-          <ul className="space-y-5 text-lg ">
-            <li className="hover:opacity-75 ">
+          <ul
+            className="space-y-5 text-lg transform -translate-y-[50%] "
+            onClick={() => setShowNav((prev) => !prev)}
+          >
+            <li className="hover:opacity-75 text-center ">
               <Link href="/articles">Articles</Link>
             </li>
             <li className="hover:opacity-75 ">
@@ -66,7 +77,7 @@ const MobileNavigation = () => {
               </Link>
             </li>
           </ul>
-          <ul className="flex space-x-8 items-center mt-5">
+          <ul className="flex space-x-8 items-center mt-5 transform -translate-y-[100%]">
             {socialLinks.map(({ href, name, icon: Icon }) => (
               <li key={name} className="hover:opacity-75 cursor-pointer ">
                 <Link href={href} rel="noopener noreferrer" target="__blank">

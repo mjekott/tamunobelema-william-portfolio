@@ -35,21 +35,16 @@ const Hero = () => {
             Tamunobelema <br /> William - Design <br /> Storyteller.
           </p>
         </div>
-        <div className="justify-end  mt-5 lg:mt-0   flex-wrap gap-5 lg:gap-20  z-10 py-0 lg:py-28 flex">
+        <div className="justify-start pl-44 py-4 lg:justify-end  overflow-x-auto mt-5 lg:mt-0  flex-nowrap  gap-5 lg:gap-20  z-10  lg:py-28 flex">
           {services.map((el, idx) => {
             return (
-              <div
-                className={` text-lg lg:text-2xl ${
-                  ["Design", "Offerings"].includes(el.heading)
-                    ? ""
-                    : "hidden lg:block"
-                }`}
-                key={el.heading}
-              >
+              <div key={el.heading} className="flex-shrink-0 ">
                 <p className=" text-gray-light mb-5">{el.heading}</p>
                 <ul className="space-y-2">
                   {el.subHeadings.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item} className="text-[16px]">
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </div>

@@ -60,7 +60,7 @@ const ProjectModal = ({ show, onClose }: ProjectModalProps) => {
               <h2 className="capitalize font-semibold text-5xl md:text-7xl lg:max-w-[50%]">
                 {currentProject?.title}
               </h2>
-              <p className="text-lg text-gray-light mt-10 lg:max-w-[50%]">
+              <p className=" text-gray-light mt-10 lg:max-w-[50%]">
                 {currentProject?.description}
               </p>
             </div>
@@ -79,20 +79,14 @@ const ProjectModal = ({ show, onClose }: ProjectModalProps) => {
           component={ProjectImageCard}
           breakPoints={projectSwiperBreakpoints}
         />
-        <div className="flex justify-between items-center py-5 mt-6">
+        <div className="flex justify-between items-center py-5 mt-6 text-md">
           {!isPreviousProjectDisabled && (
-            <button
-              className="text-sm lg:text-lg font-normal"
-              onClick={goToPreviousProject}
-            >
+            <button className=" font-normal" onClick={goToPreviousProject}>
               Previous Project
             </button>
           )}
           {!isNextProjectDisabled && (
-            <button
-              className="text-sm lg:text-lg font-normal ml-auto"
-              onClick={goToNextProject}
-            >
+            <button className=" font-normal ml-auto" onClick={goToNextProject}>
               Next Project
             </button>
           )}

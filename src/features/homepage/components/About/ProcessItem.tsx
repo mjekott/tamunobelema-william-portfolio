@@ -5,7 +5,7 @@ const ProcessItem = ({ item: { description, title }, index }: ProcessItem) => {
         <span className="text-gray-light mr-1">00/{index + 1}</span>
         {title}
       </p>
-      <p className="text-xl text-gray-light">{description}</p>
+      <p className="text-md text-gray-light">{description}</p>
     </div>
   );
 };
