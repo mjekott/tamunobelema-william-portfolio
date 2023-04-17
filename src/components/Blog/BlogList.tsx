@@ -9,6 +9,7 @@ const BlogList = ({ articles }: BlogListProps) => {
     <div className="grid grid-col md:grid-cols-2 lg:grid-cols-3 gap-5">
       {articles.map((article) => (
         <BlogCard
+          date={article.date}
           title={article.title}
           slug={article.slug}
           key={article.slug}
