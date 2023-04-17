@@ -9,11 +9,13 @@ export default defineType({
       name: "title",
       title: "Title",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
+      validation: (Rule) => Rule.required(),
       options: {
         source: "title",
         maxLength: 96,
@@ -23,10 +25,12 @@ export default defineType({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "content",
       title: "Content",
+      validation: (Rule) => Rule.required(),
       type: "array",
       of: [
         {

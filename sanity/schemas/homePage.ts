@@ -9,22 +9,35 @@ export default defineType({
       name: "page",
       title: "Title",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "about",
       title: "About",
       type: "text",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "process",
       title: "My Process",
       type: "array",
+      validation: (Rule) => Rule.required(),
       of: [
         {
           type: "object",
           fields: [
-            { name: "title", type: "string", title: "Title" },
-            { name: "description", type: "text", title: "Description" },
+            {
+              name: "title",
+              type: "string",
+              title: "Title",
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: "description",
+              type: "text",
+              title: "Description",
+              validation: (Rule) => Rule.required(),
+            },
           ],
         },
       ],
@@ -33,6 +46,7 @@ export default defineType({
     defineField({
       name: "testimonials",
       title: "Testimonial",
+      validation: (Rule) => Rule.required(),
       type: "array",
       of: [
         {
