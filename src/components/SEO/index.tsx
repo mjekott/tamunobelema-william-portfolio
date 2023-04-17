@@ -10,7 +10,7 @@ export const SEO = (props: SEOProps) => {
   const {
     title = "Tamunobelema William",
     description = "I'm committed to a lifetime of creating new and incredible spatial stories that redefine user experiences.",
-    image_url = ``,
+    image_url = `www.tamunobelemawilliam.com/logo.png`,
   } = props;
 
   const website = "www.tamunobelemawilliam.com";
