@@ -1,3 +1,4 @@
+import StudioNavbar from "@/components/StudioNavbar/StudioNavbar";
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import schemas from "./sanity/schemas";
@@ -12,5 +13,10 @@ export default defineConfig({
   plugins: [deskTool()],
   schema: {
     types: schemas,
+  },
+  studio: {
+    components: {
+      navbar: StudioNavbar,
+    },
   },
 });

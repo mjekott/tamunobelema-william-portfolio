@@ -62,7 +62,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      validation: (Rule) => Rule.reo
+      validation: (Rule) => Rule.required(),
     }),
   ],
 });
