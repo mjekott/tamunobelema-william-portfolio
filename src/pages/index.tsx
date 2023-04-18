@@ -22,7 +22,7 @@ export default function Home({
   homePageData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const {
-    homeData: { testimonials, about, process },
+    homeData: { testimonials, about, process, brand },
     projects,
   } = homePageData;
 
@@ -50,7 +50,7 @@ export default function Home({
       </ProjectContextProvider>
 
       <About about={about} process={process} />
-      <Brand />
+      <Brand brands={brand} />
       <FeatureSwiperList
         prefix="testimonial"
         data={testimonials || []}

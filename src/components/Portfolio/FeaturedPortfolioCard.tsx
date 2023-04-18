@@ -29,7 +29,10 @@ const FeaturedPortfolioCard = ({ item: project, index }: Props) => {
             src={urlFor(project?.mainImage).url()}
             fill
             alt="feature-image"
-            loading="lazy"
+            sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw"
+            priority
             className="grayscale hover:grayscale-0 object-cover"
           />
         </div>

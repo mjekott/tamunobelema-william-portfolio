@@ -50,19 +50,55 @@ export default defineType({
       type: "array",
       of: [
         {
-          type: "reference",
-          to: [{ type: "testimonial" }],
+          type: "object",
+          fields: [
+            {
+              name: "name",
+              type: "string",
+              title: "Full Name",
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: "comment",
+              type: "text",
+              title: "Comment",
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: "image",
+              type: "image",
+              title: "Image",
+              validation: (Rule) => Rule.required(),
+            },
+          ],
         },
       ],
     }),
+
     defineField({
-      name: "mainImage",
-      title: "Main image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
+      name: "brand",
+      title: "Brand",
       validation: (Rule) => Rule.required(),
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "title",
+              type: "string",
+              title: "Title",
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: "image",
+              type: "image",
+              title: "Image",
+              validation: (Rule) => Rule.required(),
+            },
+          ],
+        },
+      ],
     }),
   ],
 });

@@ -8,10 +8,15 @@ export interface HomePageData {
 export interface HomeData {
   mainImage: string;
   testimonials: Testimonial[];
+  brand: IBrand[];
   about: string;
   process: { description: string; title: string }[];
 }
 
+export interface IBrand {
+  image: string;
+  title: string;
+}
 export interface FeaturedProject {
   coverImage: string;
   description: null | string;
@@ -23,6 +28,6 @@ export interface FeaturedProject {
 export interface Testimonial {
   comment: string;
   name: string;
-  profilePic: string;
+  image: string;
   relationship: string;
 }

@@ -43,23 +43,25 @@ const FeatureSwiperList = <T,>({
           </button>
         </div>
       </div>
-      <Swiper
-        modules={[Navigation]}
-        navigation={{
-          nextEl: `.button-${prefix}-next-slide`,
-          prevEl: `.button-${prefix}-prev-slide`,
-        }}
-        spaceBetween={50}
-        className="mySwiper"
-        breakpoints={breakPoints}
-      >
-        {data &&
-          data.map((item, index) => (
-            <SwiperSlide key={index}>
-              <Component item={item} index={index} />
-            </SwiperSlide>
-          ))}
-      </Swiper>
+      <div className="h-full">
+        <Swiper
+          modules={[Navigation]}
+          navigation={{
+            nextEl: `.button-${prefix}-next-slide`,
+            prevEl: `.button-${prefix}-prev-slide`,
+          }}
+          spaceBetween={50}
+          className="mySwiper"
+          breakpoints={breakPoints}
+        >
+          {data &&
+            data.map((item, index) => (
+              <SwiperSlide key={index}>
+                <Component item={item} index={index} />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </div>
     </div>
   );
 };
