@@ -11,7 +11,11 @@ const DesktopNavigation = () => {
             <Link href="/articles">Articles</Link>
           </li>
           <li className="hover:opacity-75 ">
-            <Link href="/#" rel="noopener noreferrer" target="__blank">
+            <Link
+              href="https://www.youtube.com/channel/UCf-slgSVQTTjezx5IPbyBxA"
+              rel="noopener noreferrer"
+              target="__blank"
+            >
               Education
             </Link>
           </li>

@@ -32,7 +32,7 @@ const MobileNavigation = () => {
   return (
     <div className="h-[10vh] lg:hidden py-4  w-full p-0" ref={mobileRef}>
       <div className=" flex flex-col container p-0">
-        <div className="text-base h-full  flex justify-between items-center pr-4">
+        <div className="text-base h-full  flex justify-between items-center px-4">
           <Link href="/">
             <Logo />
           </Link>
@@ -78,7 +78,11 @@ const MobileNavigation = () => {
               <Link href="/articles">Articles</Link>
             </li>
             <li className="hover:opacity-75 ">
-              <Link href="/#" rel="noopener noreferrer" target="__blank">
+              <Link
+                href="https://www.youtube.com/channel/UCf-slgSVQTTjezx5IPbyBxA"
+                rel="noopener noreferrer"
+                target="__blank"
+              >
                 Education
               </Link>
             </li>

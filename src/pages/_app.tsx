@@ -58,7 +58,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoaded(true);
-    }, 1000);
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 

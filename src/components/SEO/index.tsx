@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 
 interface SEOProps {
   title?: string;
@@ -7,13 +8,29 @@ interface SEOProps {
 }
 
 export const SEO = (props: SEOProps) => {
+  const [faviconHref, setFaviconHref] = useState("/favicon-dark.ico");
   const {
-    title = "Tamunobelema William",
+    title = "Tamunobelema William | Design Storyteller",
     description = "I'm committed to a lifetime of creating new and incredible spatial stories that redefine user experiences.",
     image_url = `https://www.tamunobelemawilliam.com/logo.png`,
   } = props;
 
   const website = "https://www.tamunobelemawilliam.com/";
+
+  useEffect(() => {
+    // watch for changes 🕵️
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", themeChange);
+
+    // listener 👂
+    function themeChange(event: any) {
+      if (event.matches) {
+        setFaviconHref("/favicon-dark.ico");
+      } else {
+        setFaviconHref("/favicon-light.ico");
+      }
+    }
+  }, []);
 
   return (
     <Head>
@@ -35,7 +52,7 @@ export const SEO = (props: SEOProps) => {
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="og:type" content="website" />
 
-      <link rel="shortcut icon" href="/favicon.ico" />
+      <link rel="shortcut icon" href={faviconHref} />
     </Head>
   );
 };
