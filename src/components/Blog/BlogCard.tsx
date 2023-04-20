@@ -1,9 +1,8 @@
-import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import userImage from "../../assets/images/userImage.png";
 
-const BlogCard = ({ title, slug, date }: BlogCardProps) => {
+const BlogCard = ({ title, slug, date, isActive = false }: BlogCardProps) => {
   return (
     <Link href={`/articles/${slug}`}>
       <article className="flex  gap-4  py-6 cursor-pointer">
@@ -18,8 +17,13 @@ const BlogCard = ({ title, slug, date }: BlogCardProps) => {
             "
         />
         <div>
-          <h2 className="font-semibold">{title}</h2>
-          <p className="text-xs mt-2"> {dayjs(date).format("MMM DD, YYYY")}</p>
+          <h2
+            className={`font-normal ${
+              isActive ? "lg:text-white" : " "
+            } text-[#B3B3B6] text-[16px]`}
+          >
+            {title}
+          </h2>
         </div>
       </article>
     </Link>
@@ -32,4 +36,5 @@ type BlogCardProps = {
   title: string;
   slug: string;
   date: string;
+  isActive?: boolean;
 };

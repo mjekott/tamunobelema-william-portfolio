@@ -1,19 +1,38 @@
+import BlogCard from "@/components/Blog/BlogCard";
 import BlogContent from "@/components/Blog/BlogContent";
 import { SEO } from "@/components/SEO";
 import BackButton from "@/layout/BackButton";
 import Footer from "@/layout/Footer";
+import Header from "@/layout/Header/Header";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { GetStaticPropsContext, InferGetServerSidePropsType } from "next";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { getAllArticles, getArticleBySlug } from "../../../sanity/sanity-utils";
+import { Article, IArticlePage } from "../../../types/Articles";
 
 const ArticleDetailPage = ({
   article,
+  previous,
+  next,
 }: InferGetServerSidePropsType<typeof getStaticProps>) => {
   const navigate = useRouter();
   const handleBack = () => {
     navigate.push("/articles");
   };
+
+  const [page, setPage] = useState(0);
+  const { data } = useQuery<Article[]>(
+    ["articles", page],
+    () => getAllArticles({ offset: page }),
+
+    {
+      keepPreviousData: true,
+    }
+  );
 
   return (
     <motion.div
@@ -23,10 +42,69 @@ const ArticleDetailPage = ({
       exit={{ opacity: 0 }}
       className="min-h-screen container p-4 flex flex-col"
     >
-      <BackButton handleClose={handleBack} />
+      <div className="hidden lg:block">
+        <Header />
+      </div>
+      <div className="lg:hidden">
+        <BackButton handleClose={handleBack} />
+      </div>
       <SEO title={`Tamunobelema William | ${article.title}`} />
+      <div className="flex py-8">
+        <div className="p-4 w-full hidden lg:block lg:w-[350px]">
+          <div className="grid divide-y divide-gray-dark gap-2">
+            {data?.map((item) => {
+              return (
+                <BlogCard
+                  isActive={item.slug === article.slug}
+                  date={item.date}
+                  title={item.title}
+                  slug={item.slug}
+                  key={item.slug}
+                />
+              );
+            })}
+          </div>
 
-      <BlogContent {...article} />
+          <div className={`flex items-center justify-end gap-5`}>
+            <button
+              disabled={page === 0}
+              onClick={() => setPage((prev) => prev - 1)}
+              className={`icon-button w-7 h-7  `}
+            >
+              <ChevronLeftIcon className=" w-4 h-4 " />
+            </button>
+            <button
+              disabled={data?.length === 0}
+              onClick={() => setPage((prev) => prev + 1)}
+              className={`icon-button w-7 h-7  `}
+            >
+              <ChevronRightIcon className=" w-4 h-4 " />
+            </button>
+          </div>
+        </div>
+        <div className="flex-1 flex-col ">
+          <BlogContent {...article} />
+          <div className="max-w-3xl mx-auto w-full flex justify-between items-center">
+            <Link
+              href={`/articles/${previous?.slug}`}
+              className={`${
+                previous?.slug ? "inline-flex" : "hidden"
+              } text-[#B3B3B6] hover:text-white lg:text-xl`}
+            >
+              Prev
+            </Link>
+            <Link
+              href={`/articles/${next?.slug}`}
+              className={`${
+                next?.slug ? "inline-flex" : "hidden"
+              } text-[#B3B3B6] hover:text-white lg:text-xl ml-auto`}
+            >
+              Next
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <Footer />
     </motion.div>
   );
@@ -48,12 +126,14 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
-  const article: Article = await getArticleBySlug(
+  const response: IArticlePage = await getArticleBySlug(
     context.params?.slug as string
   );
   return {
     props: {
-      article,
+      article: response.current,
+      previous: response.previous,
+      next: response.next,
     },
   };
 };

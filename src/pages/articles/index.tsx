@@ -1,43 +1,30 @@
 import BlogCard from "@/components/Blog/BlogCard";
+import BlogContent from "@/components/Blog/BlogContent";
 import { SEO } from "@/components/SEO";
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { InferGetStaticPropsType } from "next";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import Link from "next/link";
+import { useState } from "react";
 import { getAllArticles } from "../../../sanity/sanity-utils";
+import { Article } from "../../../types/Articles";
 
 const ArticlesPage = ({
   articles,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { fetchNextPage, hasNextPage, isFetchingNextPage, isFetching, data } =
-    useInfiniteQuery({
-      queryKey: ["articles"],
-      queryFn: async ({ pageParam = 0 }) => {
-        return getAllArticles({ offset: pageParam });
-      },
+  const [page, setPage] = useState(0);
 
-      getNextPageParam: (lastPage, allPages) => {
-        return lastPage.length !== 0 ? allPages.indexOf(lastPage) + 1 : false;
-      },
-      initialData: () => {
-        return {
-          pageParams: [null],
-          pages: [articles],
-        };
-      },
-      enabled: articles.length > 0,
-    });
+  const { data, isLoading } = useQuery<Article[]>(
+    ["articles", page],
+    () => getAllArticles({ offset: page }),
 
-  const { ref, inView } = useInView();
-
-  useEffect(() => {
-    if (inView && !isFetchingNextPage && hasNextPage) {
-      fetchNextPage();
+    {
+      keepPreviousData: true,
     }
-  }, [inView, isFetchingNextPage, fetchNextPage, hasNextPage]);
+  );
 
   return (
     <motion.div
@@ -49,31 +36,55 @@ const ArticlesPage = ({
     >
       <SEO title="Tamunobelema William | Articles" />
       <Header />
-      <div className="p-4">
-        <h2 className="text-xl lg:text-4xl  font-semibold my-5">Articles </h2>
-        <div className="grid divide-y divide-gray-dark gap-2">
-          {data?.pages &&
-            !!data.pages.length &&
-            data?.pages.map((page) => {
-              return page.map((article: any) => (
-                <BlogCard
-                  date={article.date}
-                  title={article.title}
-                  slug={article.slug}
-                  key={article.slug}
-                />
-              ));
-            })}
+      {!!articles.length && (
+        <div className="flex gap-14 py-8">
+          <div className="p-4 w-full lg:w-[350px]">
+            <div className="grid divide-y divide-gray-dark gap-2">
+              {data?.map((article) => {
+                return (
+                  <BlogCard
+                    isActive={articles[0].slug === article.slug}
+                    date={article.date}
+                    title={article.title}
+                    slug={article.slug}
+                    key={article.slug}
+                  />
+                );
+              })}
+            </div>
+
+            <div className={`flex items-center justify-end gap-5`}>
+              <button
+                disabled={page === 0}
+                onClick={() => setPage((prev) => prev - 1)}
+                className={`icon-button w-7 h-7  `}
+              >
+                <ChevronLeftIcon className=" w-4 h-4 " />
+              </button>
+              <button
+                disabled={data?.length === 0}
+                onClick={() => setPage((prev) => prev + 1)}
+                className={`icon-button w-7 h-7  `}
+              >
+                <ChevronRightIcon className=" w-4 h-4 " />
+              </button>
+            </div>
+          </div>
+          <div className="flex-1 hidden lg:flex flex-col ">
+            <BlogContent {...articles[0]} />
+            <div className="max-w-3xl mx-auto w-full">
+              <Link
+                href={`/articles/${articles[1]?.slug}`}
+                className={`${
+                  articles[1]?.slug ? "inline-flex" : "hidden"
+                } text-[#B3B3B6] hover:text-white text-2xl`}
+              >
+                Prev
+              </Link>
+            </div>
+          </div>
         </div>
-        <div ref={ref} className="flex justify-center py-6">
-          {isFetching && (
-            <div
-              className="inline-block relative h-6 w-6 animate-spin rounded-full border-gray-300 border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-              role="status"
-            ></div>
-          )}
-        </div>
-      </div>
+      )}
       <Footer />
     </motion.div>
   );

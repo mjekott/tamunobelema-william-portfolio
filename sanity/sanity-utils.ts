@@ -52,7 +52,7 @@ export async function getHomePage(): Promise<HomePageData> {
 
 export async function getAllArticles({
   offset = 0,
-  skip = 10,
+  skip = 5,
 }: {
   offset?: number;
   skip?: number;
@@ -64,7 +64,9 @@ export async function getAllArticles({
       _id,
     title,
     'slug':slug.current,
-    'date':publishedAt
+    'date':publishedAt,
+     content[]{...},
+     "total": count(*[_type == "article"]) 
   } | order(date desc)[${start}...${end}]`
   );
 
@@ -74,11 +76,18 @@ export async function getAllArticles({
 export async function getArticleBySlug(slug: string) {
   return client.fetch(
     groq`*[_type=='article' && slug.current == $slug]{
+  "current":{
     title,
     'slug':slug.current,
     'date':publishedAt,
     content[]{...}
-  }[0]`,
+  },
+  "previous": *[_type == 'article' && ^.publishedAt > publishedAt]| order(publishedAt desc)[0]{ 
+            "slug": slug.current, 
+        },
+        "next": *[_type == 'article' && ^.publishedAt < publishedAt]| order(publishedAt asc)[0]{ 
+            "slug": slug.current,
+  }}[0]`,
     { slug }
   );
 }
