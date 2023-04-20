@@ -34,6 +34,10 @@ const ArticleDetailPage = ({
     }
   );
 
+  console.log(previous);
+
+  const disableNext = (page + 1) * 5 >= article?.total;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -74,7 +78,7 @@ const ArticleDetailPage = ({
               <ChevronLeftIcon className=" w-4 h-4 " />
             </button>
             <button
-              disabled={data?.length === 0}
+              disabled={disableNext}
               onClick={() => setPage((prev) => prev + 1)}
               className={`icon-button w-7 h-7  `}
             >
@@ -84,7 +88,7 @@ const ArticleDetailPage = ({
         </div>
         <div className="flex-1 flex-col ">
           <BlogContent {...article} />
-          <div className="max-w-3xl mx-auto w-full flex justify-between items-center">
+          <div className="max-w-3xl mx-auto w-full hidden justify-between items-center">
             <Link
               href={`/articles/${previous?.slug}`}
               className={`${
@@ -121,7 +125,7 @@ export const getStaticPaths = async () => {
   }));
   return {
     paths,
-    fallback: false, // can also be true or 'blocking'
+    fallback: true, // can also be true or 'blocking'
   };
 };
 
@@ -129,11 +133,12 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   const response: IArticlePage = await getArticleBySlug(
     context.params?.slug as string
   );
+
   return {
     props: {
-      article: response.current,
-      previous: response.previous,
-      next: response.next,
+      article: response?.current || {},
+      previous: response?.previous || null,
+      next: response?.next || null,
     },
   };
 };

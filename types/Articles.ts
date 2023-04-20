@@ -3,6 +3,7 @@ export type Article = {
   slug: string;
   date: string;
   content: any;
+  total: number;
 };
 
 export interface IArticlePage {

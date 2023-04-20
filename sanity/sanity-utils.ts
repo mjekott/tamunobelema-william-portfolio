@@ -75,11 +75,12 @@ export async function getAllArticles({
 
 export async function getArticleBySlug(slug: string) {
   return client.fetch(
-    groq`*[_type=='article' && slug.current == $slug]{
+    `*[_type=='article' && slug.current == $slug]{
   "current":{
     title,
     'slug':slug.current,
     'date':publishedAt,
+    "total": count(*[_type == "article"]) ,
     content[]{...}
   },
   "previous": *[_type == 'article' && ^.publishedAt > publishedAt]| order(publishedAt desc)[0]{ 

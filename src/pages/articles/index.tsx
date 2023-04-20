@@ -17,7 +17,7 @@ const ArticlesPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [page, setPage] = useState(0);
 
-  const { data, isLoading } = useQuery<Article[]>(
+  const { data } = useQuery<Article[]>(
     ["articles", page],
     () => getAllArticles({ offset: page }),
 
@@ -25,6 +25,8 @@ const ArticlesPage = ({
       keepPreviousData: true,
     }
   );
+
+  const disableNext = (page + 1) * 5 >= articles[0].total;
 
   return (
     <motion.div
@@ -62,7 +64,7 @@ const ArticlesPage = ({
                 <ChevronLeftIcon className=" w-4 h-4 " />
               </button>
               <button
-                disabled={data?.length === 0}
+                disabled={disableNext}
                 onClick={() => setPage((prev) => prev + 1)}
                 className={`icon-button w-7 h-7  `}
               >
@@ -72,7 +74,7 @@ const ArticlesPage = ({
           </div>
           <div className="flex-1 hidden lg:flex flex-col ">
             <BlogContent {...articles[0]} />
-            <div className="max-w-3xl mx-auto w-full">
+            <div className="max-w-3xl mx-auto w-full hidden">
               <Link
                 href={`/articles/${articles[1]?.slug}`}
                 className={`${

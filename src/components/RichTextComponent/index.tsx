@@ -9,7 +9,7 @@ const RichTextComponents = {
   types: {
     image: ({ value }: any) => {
       return (
-        <div className="relative w-full  h-[300px] lg:h-[500px] my-10">
+        <div className="relative w-full max-w-[500px] mx-auto h-[300px] lg:h-[450px] my-10">
           <Image
             className="object-cover"
             src={urlFor(value.asset).url()}
