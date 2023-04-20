@@ -4,7 +4,6 @@ const Path = dynamic(() =>
   import("framer-motion").then((mod) => mod.motion.path)
 );
 
-const Text = dynamic(() => import("framer-motion").then((mod) => mod.motion.p));
 
 const Loader = () => {
   return (
@@ -45,19 +44,7 @@ const Loader = () => {
           fill="white"
         />
       </svg>
-      <Text
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: [0, 1, 0],
-        }}
-        exit={{ opacity: 0 }}
-        transition={{
-          duration: 2,
-          ease: "backInOut",
-        }}
-      >
-        Loading...
-      </Text>
+
     </div>
   );
 };
