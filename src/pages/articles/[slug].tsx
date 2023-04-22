@@ -25,7 +25,7 @@ const ArticleDetailPage = ({
   };
 
   const [page, setPage] = useState(0);
-  const { data } = useQuery<Article[]>(
+  const { data, isLoading } = useQuery<Article[]>(
     ["articles", page],
     () => getAllArticles({ offset: page }),
 
@@ -54,6 +54,7 @@ const ArticleDetailPage = ({
       <div className="flex py-8 gap-14 relative">
         <div className="p-4 w-full hidden lg:block lg:w-[350px] relative">
           <div className="sticky top-14">
+            {isLoading && <p className="py-10">loading...</p>}
             <div className="grid divide-y divide-gray-dark gap-2 ">
               {data?.map((item) => {
                 return (

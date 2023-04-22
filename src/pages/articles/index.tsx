@@ -23,6 +23,7 @@ const ArticlesPage = ({
 
     {
       keepPreviousData: true,
+      placeholderData: articles,
     }
   );
 

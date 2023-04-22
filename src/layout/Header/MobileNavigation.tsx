@@ -30,7 +30,7 @@ const MobileNavigation = () => {
     }
   }, [showNav]);
   return (
-    <div className="h-[10vh] lg:hidden py-4  w-full p-0" ref={mobileRef}>
+    <div className="h-[10vh] md:hidden py-4  w-full p-0" ref={mobileRef}>
       <div className=" flex flex-col container p-0">
         <div className="text-base h-full  flex justify-between items-center px-4">
           <Link href="/">
