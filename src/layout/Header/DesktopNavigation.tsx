@@ -12,7 +12,7 @@ const DesktopNavigation = () => {
           </li>
           <li className="hover:opacity-75 ">
             <Link
-              href="https://www.youtube.com/channel/UCf-slgSVQTTjezx5IPbyBxA"
+              href="https://www.youtube.com/@tamunobelema"
               rel="noopener noreferrer"
               target="__blank"
             >
