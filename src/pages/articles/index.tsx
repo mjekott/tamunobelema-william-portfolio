@@ -35,7 +35,7 @@ const ArticlesPage = ({
       {!!articles.length && (
         <div className="flex gap-14 py-8">
           <div className="p-4 w-full lg:w-[350px] relative">
-            <div className="sticky top-14">
+            <div className="sticky top-28">
               <div className="grid divide-y divide-gray-dark gap-2 ">
                 {data?.map((item) => {
                   return (

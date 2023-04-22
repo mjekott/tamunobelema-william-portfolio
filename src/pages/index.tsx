@@ -42,6 +42,10 @@ export default function Home({
       <Hero />
       <ProjectContextProvider projects={projects || []}>
         <FeatureSwiperList
+          autoplay={{
+            delay: 2000,
+            pauseOnMouseEnter: true,
+          }}
           prefix="projects"
           data={projects || []}
           title="Projects"

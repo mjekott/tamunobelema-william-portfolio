@@ -30,7 +30,10 @@ const MobileNavigation = () => {
     }
   }, [showNav]);
   return (
-    <div className="h-[10vh] md:hidden py-4  w-full p-0" ref={mobileRef}>
+    <div
+      className="h-[10vh] sticky top-0 bg-[#111111] z-40 md:hidden py-4  w-full p-0"
+      ref={mobileRef}
+    >
       <div className=" flex flex-col container p-0">
         <div className="text-base h-full  flex justify-between items-center px-4">
           <Link href="/">
@@ -66,7 +69,7 @@ const MobileNavigation = () => {
           </button>
         </div>
         <div
-          className={` z-40 flex justify-center items-center flex-col  h-[90vh] overflow-hidden bg-[#111111]  mt-5 w-full rounded  ${
+          className={` z-40 flex justify-center items-center flex-col  h-[90vh] overflow-hidden bg-[#111111]  mt-0 w-full rounded  ${
             !showNav && "hidden opacity-0"
           }`}
         >

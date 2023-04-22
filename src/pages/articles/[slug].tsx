@@ -37,7 +37,7 @@ const ArticleDetailPage = ({
 
   return (
     <div className="min-h-screen container p-4 flex flex-col">
-      <div className="hidden lg:block">
+      <div className="hidden lg:block sticky top-0 bg-[#111111] z-40">
         <Header />
       </div>
       <div className="lg:hidden">
@@ -46,7 +46,7 @@ const ArticleDetailPage = ({
       <SEO title={`Tamunobelema William | ${article.title}`} />
       <div className="flex py-8 gap-14 relative">
         <div className="p-4 w-full hidden lg:block lg:w-[350px] relative">
-          <div className="sticky top-14">
+          <div className="sticky top-28">
             {isLoading && <p className="py-10">loading...</p>}
             <div className="grid divide-y divide-gray-dark gap-2 ">
               {data?.map((item) => {

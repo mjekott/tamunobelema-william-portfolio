@@ -1,7 +1,8 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
-import { Navigation } from "swiper";
+import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
+import { AutoplayOptions } from "swiper/types";
 
 type Props<T> = {
   data: T[];
@@ -9,6 +10,7 @@ type Props<T> = {
   component: React.ComponentType<React.PropsWithChildren<any & T>>;
   breakPoints?: any;
   prefix: string;
+  autoplay?: AutoplayOptions;
 };
 
 const defaultBreakpoints = {
@@ -25,6 +27,7 @@ const FeatureSwiperList = <T,>({
   data,
   title,
   breakPoints = defaultBreakpoints,
+  autoplay,
   prefix,
 }: Props<T>) => {
   if (data && data.length === 0) return null;
@@ -45,7 +48,8 @@ const FeatureSwiperList = <T,>({
       </div>
       <div className="">
         <Swiper
-          modules={[Navigation]}
+          autoplay={autoplay}
+          modules={[Navigation, Autoplay]}
           navigation={{
             nextEl: `.button-${prefix}-next-slide`,
             prevEl: `.button-${prefix}-prev-slide`,
