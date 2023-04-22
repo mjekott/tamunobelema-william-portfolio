@@ -8,7 +8,7 @@ interface SEOProps {
 }
 
 export const SEO = (props: SEOProps) => {
-  const [faviconHref, setFaviconHref] = useState("/favicon-dark.ico");
+  const [faviconHref, setFaviconHref] = useState("/favicon-light.ico");
   const {
     title = "Tamunobelema William | Design Storyteller",
     description = "I'm committed to a lifetime of creating new and incredible spatial stories that redefine user experiences.",
@@ -18,17 +18,12 @@ export const SEO = (props: SEOProps) => {
   const website = "https://www.tamunobelemawilliam.com/";
 
   useEffect(() => {
-    // watch for changes 🕵️
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    mediaQuery.addEventListener("change", themeChange);
 
-    // listener 👂
-    function themeChange(event: any) {
-      if (event.matches) {
-        setFaviconHref("/favicon-dark.ico");
-      } else {
-        setFaviconHref("/favicon-light.ico");
-      }
+    if (mediaQuery.matches) {
+      setFaviconHref("/favicon-light.ico");
+    } else {
+      setFaviconHref("/favicon-dark.ico");
     }
   }, []);
 

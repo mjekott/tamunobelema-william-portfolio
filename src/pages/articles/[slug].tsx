@@ -6,7 +6,6 @@ import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
 import { GetStaticPropsContext, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -37,13 +36,7 @@ const ArticleDetailPage = ({
   const disableNext = (page + 1) * 5 >= article?.total;
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.75, ease: "easeInOut" }}
-      exit={{ opacity: 0 }}
-      className="min-h-screen container p-4 flex flex-col"
-    >
+    <div className="min-h-screen container p-4 flex flex-col">
       <div className="hidden lg:block">
         <Header />
       </div>
@@ -111,7 +104,7 @@ const ArticleDetailPage = ({
       </div>
 
       <Footer />
-    </motion.div>
+    </div>
   );
 };
 

@@ -2,7 +2,6 @@ import { PortableText } from "@portabletext/react";
 import RichTextComponents from "../RichTextComponent";
 
 const BlogContent = ({ title, date, content }: BlogContentProps) => {
-  console.log(date);
   return (
     <article className="py-5">
       {/*    <header className="flex gap-2 md:gap-6   py-5">

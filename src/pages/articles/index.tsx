@@ -5,7 +5,6 @@ import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
 import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { useState } from "react";
@@ -30,13 +29,7 @@ const ArticlesPage = ({
   const disableNext = (page + 1) * 5 >= articles[0].total;
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.75, ease: "easeInOut" }}
-      exit={{ opacity: 0 }}
-      className=" container  min-h-screen"
-    >
+    <div className=" container  min-h-screen">
       <SEO title="Tamunobelema William | Articles" />
       <Header />
       {!!articles.length && (
@@ -91,7 +84,7 @@ const ArticlesPage = ({
         </div>
       )}
       <Footer />
-    </motion.div>
+    </div>
   );
 };
 
