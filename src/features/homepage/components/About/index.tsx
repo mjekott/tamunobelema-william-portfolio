@@ -8,9 +8,9 @@ const testimonialBreakPoint = {
 };
 const About = ({ about, process }: AboutProps) => {
   return (
-    <div className="container p-4 pt-20 lg:py-28  ">
+    <div className="container  pt-20 lg:py-28  ">
       <div className="flex flex-col lg:flex-row space-y-10  divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-[#292929]">
-        <div className="lg:w-1/2  lg:pr-20">
+        <div className="lg:w-1/2  lg:pr-20 px-4">
           <p className="text-2xl mb-5 font-semibold">About Me</p>
           <p className="text-md text-gray-light">{about}</p>
         </div>

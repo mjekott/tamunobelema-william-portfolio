@@ -30,7 +30,7 @@ const FeatureSwiperList = <T,>({
   if (data && data.length === 0) return null;
 
   return (
-    <div className="container p-4">
+    <div className="container px-4">
       <div className="flex justify-between items-center mb-5 gap-5 lg:mb-12 py-5">
         <h2 className="text-xl lg:text-4xl  font-semibold">{title}</h2>
 
@@ -43,7 +43,7 @@ const FeatureSwiperList = <T,>({
           </button>
         </div>
       </div>
-      <div className="h-full">
+      <div className="">
         <Swiper
           modules={[Navigation]}
           navigation={{

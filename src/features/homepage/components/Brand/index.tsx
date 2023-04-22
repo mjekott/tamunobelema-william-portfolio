@@ -6,13 +6,7 @@ import { IBrand } from "../../../../../types/HomePage";
 const Brand = ({ brands }: BrandProps) => {
   return (
     <div className="container p-4   mb-10 md:mb-20">
-      <Marquee
-        gradientWidth="0px"
-        className="flex items-center gap-20"
-        pauseOnHover
-        speed={30}
-        delay={3}
-      >
+      <Marquee gradientWidth="0px" speed={30} delay={3}>
         {brands.map((brand, idx) => (
           <Image
             src={urlFor(brand.image).url()}

@@ -9,7 +9,7 @@ interface Props {
 
 const TestimonialCard = ({ item: testimonial }: Props) => {
   return (
-    <div className="overflow-hidden  flex flex-col">
+    <div className="overflow-hidden  flex flex-col ">
       <div className="min-h-[50px]">
         <div className="border-l-2 ease-out border-white px-4 mb-8  ">
           <p className=" italic sm:line-clamp-2 hover:line-clamp-none">
