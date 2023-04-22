@@ -11,7 +11,7 @@ const RichTextComponents = {
       return (
         <div className="relative w-full max-w-[500px] mx-auto h-[300px] lg:h-[450px] my-10">
           <Image
-            className="object-cover"
+            className="object-cover grayscale hover:grayscale-0"
             src={urlFor(value.asset).url()}
             alt={value.alt || "blog image"}
             fill

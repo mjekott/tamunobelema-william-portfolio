@@ -34,8 +34,6 @@ const ArticleDetailPage = ({
     }
   );
 
-  console.log(previous);
-
   const disableNext = (page + 1) * 5 >= article?.total;
 
   return (
@@ -53,42 +51,44 @@ const ArticleDetailPage = ({
         <BackButton handleClose={handleBack} />
       </div>
       <SEO title={`Tamunobelema William | ${article.title}`} />
-      <div className="flex py-8">
-        <div className="p-4 w-full hidden lg:block lg:w-[350px]">
-          <div className="grid divide-y divide-gray-dark gap-2">
-            {data?.map((item) => {
-              return (
-                <BlogCard
-                  isActive={item.slug === article.slug}
-                  date={item.date}
-                  title={item.title}
-                  slug={item.slug}
-                  key={item.slug}
-                />
-              );
-            })}
-          </div>
+      <div className="flex py-8 gap-14 relative">
+        <div className="p-4 w-full hidden lg:block lg:w-[350px] relative">
+          <div className="sticky top-14">
+            <div className="grid divide-y divide-gray-dark gap-2 ">
+              {data?.map((item) => {
+                return (
+                  <BlogCard
+                    isActive={item.slug === article.slug}
+                    date={item.date}
+                    title={item.title}
+                    slug={item.slug}
+                    key={item.slug}
+                  />
+                );
+              })}
+            </div>
 
-          <div className={`flex items-center justify-end gap-5`}>
-            <button
-              disabled={page === 0}
-              onClick={() => setPage((prev) => prev - 1)}
-              className={`icon-button w-7 h-7  `}
-            >
-              <ChevronLeftIcon className=" w-4 h-4 " />
-            </button>
-            <button
-              disabled={disableNext}
-              onClick={() => setPage((prev) => prev + 1)}
-              className={`icon-button w-7 h-7  `}
-            >
-              <ChevronRightIcon className=" w-4 h-4 " />
-            </button>
+            <div className={`flex items-center justify-end gap-5`}>
+              <button
+                disabled={page === 0}
+                onClick={() => setPage((prev) => prev - 1)}
+                className={`icon-button w-7 h-7  `}
+              >
+                <ChevronLeftIcon className=" w-4 h-4 " />
+              </button>
+              <button
+                disabled={disableNext}
+                onClick={() => setPage((prev) => prev + 1)}
+                className={`icon-button w-7 h-7  `}
+              >
+                <ChevronRightIcon className=" w-4 h-4 " />
+              </button>
+            </div>
           </div>
         </div>
-        <div className="flex-1 flex-col ">
+        <div className="flex-1 flex-col sticky top-0">
           <BlogContent {...article} />
-          <div className="max-w-3xl mx-auto w-full hidden justify-between items-center">
+          <div className="max-w-3xl mx-auto w-full  justify-between items-center hidden">
             <Link
               href={`/articles/${previous?.slug}`}
               className={`${
@@ -140,5 +140,6 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
       previous: response?.previous || null,
       next: response?.next || null,
     },
+    revalidate: 1000 * 60,
   };
 };

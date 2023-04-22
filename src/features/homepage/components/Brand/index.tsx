@@ -1,11 +1,18 @@
 import Image from "next/image";
+import Marquee from "react-fast-marquee";
 import urlFor from "../../../../../sanity/config/urlFor";
 import { IBrand } from "../../../../../types/HomePage";
 
 const Brand = ({ brands }: BrandProps) => {
   return (
-    <div className="container p-4  py-4 ">
-      <div className="flex pl-4 lg:justify-center items-center overflow-x-auto py-4  flex-nowrap overflow-hidden gap-x-8 gap-y-10 ">
+    <div className="container p-4   mb-10 md:mb-20">
+      <Marquee
+        gradientWidth="0px"
+        className="flex items-center gap-20"
+        pauseOnHover
+        speed={30}
+        delay={3}
+      >
         {brands.map((brand, idx) => (
           <Image
             src={urlFor(brand.image).url()}
@@ -13,10 +20,10 @@ const Brand = ({ brands }: BrandProps) => {
             key={idx}
             width={50}
             height={70}
-            className="w-auto h-auto"
+            className="w-auto mx-[30px]"
           />
         ))}
-      </div>
+      </Marquee>
     </div>
   );
 };

@@ -70,6 +70,11 @@ export default defineType({
               title: "Image",
               validation: (Rule) => Rule.required(),
             },
+            {
+              name: "relationship",
+              type: "string",
+              title: "Client Type",
+            },
           ],
         },
       ],

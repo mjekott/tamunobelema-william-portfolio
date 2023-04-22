@@ -51,6 +51,7 @@ export default function Home({
 
       <About about={about} process={process} />
       <Brand brands={brand} />
+
       <FeatureSwiperList
         prefix="testimonial"
         data={testimonials || []}
@@ -70,5 +71,6 @@ export async function getStaticProps() {
     props: {
       homePageData,
     },
+    revalidate: 1000 * 60,
   };
 }

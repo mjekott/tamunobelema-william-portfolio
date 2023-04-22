@@ -51,12 +51,12 @@ const FeatureSwiperList = <T,>({
             prevEl: `.button-${prefix}-prev-slide`,
           }}
           spaceBetween={50}
-          className="mySwiper"
+          className=""
           breakpoints={breakPoints}
         >
           {data &&
             data.map((item, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={index} className="h-full">
                 <Component item={item} index={index} />
               </SwiperSlide>
             ))}

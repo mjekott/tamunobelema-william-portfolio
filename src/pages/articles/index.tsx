@@ -40,36 +40,38 @@ const ArticlesPage = ({
       <Header />
       {!!articles.length && (
         <div className="flex gap-14 py-8">
-          <div className="p-4 w-full lg:w-[350px]">
-            <div className="grid divide-y divide-gray-dark gap-2">
-              {data?.map((article) => {
-                return (
-                  <BlogCard
-                    isActive={articles[0].slug === article.slug}
-                    date={article.date}
-                    title={article.title}
-                    slug={article.slug}
-                    key={article.slug}
-                  />
-                );
-              })}
-            </div>
+          <div className="p-4 w-full lg:w-[350px] relative">
+            <div className="sticky top-14">
+              <div className="grid divide-y divide-gray-dark gap-2 ">
+                {data?.map((item) => {
+                  return (
+                    <BlogCard
+                      isActive={item.slug === articles[0].slug}
+                      date={item.date}
+                      title={item.title}
+                      slug={item.slug}
+                      key={item.slug}
+                    />
+                  );
+                })}
+              </div>
 
-            <div className={`flex items-center justify-end gap-5`}>
-              <button
-                disabled={page === 0}
-                onClick={() => setPage((prev) => prev - 1)}
-                className={`icon-button w-7 h-7  `}
-              >
-                <ChevronLeftIcon className=" w-4 h-4 " />
-              </button>
-              <button
-                disabled={disableNext}
-                onClick={() => setPage((prev) => prev + 1)}
-                className={`icon-button w-7 h-7  `}
-              >
-                <ChevronRightIcon className=" w-4 h-4 " />
-              </button>
+              <div className={`flex items-center justify-end gap-5`}>
+                <button
+                  disabled={page === 0}
+                  onClick={() => setPage((prev) => prev - 1)}
+                  className={`icon-button w-7 h-7  `}
+                >
+                  <ChevronLeftIcon className=" w-4 h-4 " />
+                </button>
+                <button
+                  disabled={disableNext}
+                  onClick={() => setPage((prev) => prev + 1)}
+                  className={`icon-button w-7 h-7  `}
+                >
+                  <ChevronRightIcon className=" w-4 h-4 " />
+                </button>
+              </div>
             </div>
           </div>
           <div className="flex-1 hidden lg:flex flex-col ">
@@ -100,5 +102,6 @@ export const getStaticProps = async () => {
     props: {
       articles,
     },
+    revalidate: 1000 * 60,
   };
 };

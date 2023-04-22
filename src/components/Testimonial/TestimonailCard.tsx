@@ -9,13 +9,13 @@ interface Props {
 
 const TestimonialCard = ({ item: testimonial }: Props) => {
   return (
-    <div className="overflow-hidden flex flex-col">
-      <div>
-        <div className="border-l-2 border-white px-4 mb-8 ">
+    <div className="overflow-hidden  flex flex-col">
+      <div className="min-h-[50px]">
+        <div className="border-l-2 ease-out border-white px-4 mb-8   italic md:line-clamp-2 hover:line-clamp-none">
           {testimonial.comment}
         </div>
-        <TestimonialBorderSvg />
       </div>
+      <TestimonialBorderSvg />
       <div className="flex items-center gap-4 py-8 ">
         <div className="relative w-[41px] lg:w-[100px]  h-[41px] lg:h-[100px] rounded-full overflow-hidden">
           <Image
@@ -25,12 +25,16 @@ const TestimonialCard = ({ item: testimonial }: Props) => {
             sizes="(max-width: 768px) 100vw,
             (max-width: 1200px) 50vw,
             33vw"
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </div>
         <div>
-          <p>{testimonial.name}</p>
-          <p>{testimonial.relationship}</p>
+          <p className="capitalize text-white font-semibold text-xl">
+            {testimonial.name}
+          </p>
+          <p className="uppercase text-[14px] text-[#B3B3B6] font-semibold mt-1">
+            {testimonial.relationship}
+          </p>
         </div>
       </div>
     </div>
