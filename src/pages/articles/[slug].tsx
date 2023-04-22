@@ -140,6 +140,6 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
       previous: response?.previous || null,
       next: response?.next || null,
     },
-    revalidate: 1000 * 60,
+    revalidate: 60,
   };
 };
