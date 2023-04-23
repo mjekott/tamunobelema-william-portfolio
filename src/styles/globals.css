@@ -11,3 +11,7 @@
 img {
   user-select: none;
 }
+
+.swiper-slide {
+  height: auto !important;
+}

@@ -23,25 +23,25 @@ const FeaturedPortfolioCard = ({ item: project, index }: Props) => {
   };
   return (
     <>
-      <div className="cursor-pointer" onClick={handleSelect}>
-        <div className="relative lg:h-[530px] h-[269px]">
-          <Image
-            src={urlFor(project?.mainImage).url()}
-            fill
-            alt="feature-image"
-            sizes="(max-width: 768px) 100vw,
+      <div className="cursor-pointer h-full " onClick={handleSelect}>
+        <div className="flex flex-col h-full">
+          <div className="relative lg:h-[530px] h-[269px]">
+            <Image
+              src={urlFor(project?.mainImage).url()}
+              fill
+              alt="feature-image"
+              sizes="(max-width: 768px) 100vw,
             (max-width: 1200px) 50vw,
             33vw"
-            priority
-            className="grayscale hover:grayscale-0 object-cover"
-          />
-        </div>
-        <div className="mt-10">
-          <p className="mb-5 text-2xl">{project?.title}</p>
-          <p className="text-gray-light text-md line-clamp-2">
+              priority
+              className="grayscale hover:grayscale-0 object-cover"
+            />
+          </div>
+          <p className="mt-5 text-2xl ">{project?.title}</p>
+          <p className="text-gray-light text-md line-clamp-2 my-3">
             {project?.description}
           </p>
-          <p className="mt-5 text-2xl">
+          <p className=" text-2xl mt-auto">
             {new Date(project?.publishedAt).getFullYear()}
           </p>
         </div>

@@ -4,6 +4,7 @@ import { SEO } from "@/components/SEO";
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { ArrowLeft } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
@@ -70,14 +71,14 @@ const ArticlesPage = ({
           </div>
           <div className="flex-1 hidden lg:flex flex-col ">
             <BlogContent {...articles[0]} />
-            <div className="max-w-3xl mx-auto w-full hidden">
+            <div className="max-w-3xl mx-auto w-full ">
               <Link
                 href={`/articles/${articles[1]?.slug}`}
                 className={`${
                   articles[1]?.slug ? "inline-flex" : "hidden"
-                } text-[#B3B3B6] hover:text-white text-2xl`}
+                } text-[#B3B3B6] hover:text-white text-2xl gap-1 flex items-center`}
               >
-                Prev
+                <ArrowLeft /> Prev
               </Link>
             </div>
           </div>

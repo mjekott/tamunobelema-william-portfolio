@@ -48,6 +48,9 @@ const FeatureSwiperList = <T,>({
       </div>
       <div className="">
         <Swiper
+          centerInsufficientSlides={true}
+          slidesPerView="auto"
+          freeMode={false}
           autoplay={autoplay}
           modules={[Navigation, Autoplay]}
           navigation={{

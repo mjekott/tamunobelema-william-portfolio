@@ -5,6 +5,7 @@ import BackButton from "@/layout/BackButton";
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { ArrowLeft, ArrowRight } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { GetStaticPropsContext, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
@@ -82,22 +83,22 @@ const ArticleDetailPage = ({
         </div>
         <div className="flex-1 flex-col sticky top-0">
           <BlogContent {...article} />
-          <div className="max-w-3xl mx-auto w-full  justify-between items-center hidden">
+          <div className="w-full flex  justify-between items-center ">
             <Link
               href={`/articles/${previous?.slug}`}
               className={`${
                 previous?.slug ? "inline-flex" : "hidden"
-              } text-[#B3B3B6] hover:text-white lg:text-xl`}
+              } text-[#B3B3B6] hover:text-white lg:text-xl flex gap-1 items-center`}
             >
-              Prev
+              <ArrowLeft /> Prev
             </Link>
             <Link
               href={`/articles/${next?.slug}`}
               className={`${
                 next?.slug ? "inline-flex" : "hidden"
-              } text-[#B3B3B6] hover:text-white lg:text-xl ml-auto`}
+              } text-[#B3B3B6] hover:text-white lg:text-xl flex gap-1 items-center ml-auto`}
             >
-              Next
+              Next <ArrowRight />
             </Link>
           </div>
         </div>

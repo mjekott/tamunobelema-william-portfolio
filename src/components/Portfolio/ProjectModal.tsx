@@ -57,7 +57,7 @@ const ProjectModal = ({ show, onClose }: ProjectModalProps) => {
         <div className="relative py-10">
           <div className="flex justify-between">
             <div>
-              <h2 className="capitalize font-semibold text-5xl md:text-7xl lg:max-w-[50%]">
+              <h2 className="capitalize font-semibold break-words text-5xl md:text-7xl ">
                 {currentProject?.title}
               </h2>
               <p className=" text-gray-light mt-10 lg:max-w-[50%]">
