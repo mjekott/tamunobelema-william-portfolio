@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import urlFor from "../../../sanity/config/urlFor";
+import BlurImage from "../BlurImage";
 
 const sharedClasses = "dark:text-white";
 const bodyClasses = "text-md ";
@@ -10,8 +10,8 @@ const RichTextComponents = {
     image: ({ value }: any) => {
       return (
         <div className="relative w-full max-w-[500px] mx-auto h-[300px] lg:h-[450px] my-10">
-          <Image
-            className="object-cover grayscale hover:grayscale-0"
+          <BlurImage
+            className="grayscale hover:grayscale-0 object-cover cursor-pointer"
             src={urlFor(value.asset).url()}
             alt={value.alt || "blog image"}
             fill

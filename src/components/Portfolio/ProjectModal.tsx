@@ -1,9 +1,9 @@
 import { useProjectContext } from "@/context/ProjectContext";
 import Footer from "@/layout/Footer";
-import Image from "next/image";
 import { useEffect, useRef } from "react";
 import urlFor from "../../../sanity/config/urlFor";
 import RightLogo from "../../assets/right-logo.svg";
+import BlurImage from "../BlurImage";
 import FeatureSwiperList from "../FeatureSwiperList";
 import Modal from "../Modal/Modal";
 
@@ -106,11 +106,10 @@ type ProjectImageCardProps = {
 const ProjectImageCard = ({ item: src }: ProjectImageCardProps) => {
   return (
     <div className="relative lg:h-[530px] h-[269px]">
-      <Image
+      <BlurImage
         src={src}
         fill
         alt="other images"
-        loading="lazy"
         className="grayscale hover:grayscale-0 object-cover cursor-pointer"
       />
     </div>

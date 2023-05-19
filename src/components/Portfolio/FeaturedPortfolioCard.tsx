@@ -1,8 +1,8 @@
 import { useProjectContext } from "@/context/ProjectContext";
-import Image from "next/image";
 import { useState } from "react";
 import urlFor from "../../../sanity/config/urlFor";
 import { Project } from "../../../types/Project";
+import BlurImage from "../BlurImage";
 import ProjectModal from "./ProjectModal";
 
 type Props = {
@@ -26,7 +26,7 @@ const FeaturedPortfolioCard = ({ item: project, index }: Props) => {
       <div className="cursor-pointer h-full " onClick={handleSelect}>
         <div className="flex flex-col h-full">
           <div className="relative lg:h-[530px] h-[269px]">
-            <Image
+            <BlurImage
               src={urlFor(project?.mainImage).url()}
               fill
               alt="feature-image"
