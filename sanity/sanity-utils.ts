@@ -92,3 +92,11 @@ export async function getArticleBySlug(slug: string) {
     { slug }
   );
 }
+
+export async function deleteProject() {
+  try {
+    console.log("Document deleted successfully:", response);
+  } catch (error) {
+    console.error("Error deleting document:", error);
+  }
+}

@@ -1,4 +1,5 @@
 import StudioNavbar from "@/components/StudioNavbar/StudioNavbar";
+import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import schemas from "./sanity/schemas";
@@ -10,7 +11,7 @@ export default defineConfig({
   dataset: "production",
   apiVersion: "2023-03-04",
   basePath: "/admin",
-  plugins: [deskTool()],
+  plugins: [deskTool(), visionTool()],
   schema: {
     types: schemas,
   },
