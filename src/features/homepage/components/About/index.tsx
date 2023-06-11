@@ -16,7 +16,7 @@ const About = ({ about, process }: AboutProps) => {
         </div>
         <div className="flex-1  lg:py-0 lg:px-20">
           <div className="hidden lg:block">
-            <p className="text-2xl mb-5 font-semibold">My Process</p>
+            <p className="text-2xl mb-5 font-semibold">My Design Philosophy</p>
             <div className="divide-y-2 space-y-5 divide-[#292929] ">
               {process.map((process, idx) => (
                 <ProcessItem
