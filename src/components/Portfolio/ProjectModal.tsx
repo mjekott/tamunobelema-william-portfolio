@@ -40,7 +40,7 @@ const ProjectModal = ({ show, onClose }: ProjectModalProps) => {
   const projectImagesUrl =
     (currentProject &&
       currentProject.images &&
-      currentProject.images.map((el: any) => urlFor(el).url())) ||
+      currentProject.images.map((el: any) => (el ? urlFor(el).url() : ""))) ||
     [];
 
   return (

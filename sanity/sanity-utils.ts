@@ -96,7 +96,7 @@ export async function getArticleBySlug(slug: string) {
 export async function deleteProject() {
   try {
     const response = await client.delete({
-      query: `*[_type == "project" && _id == "a14e921f-b6df-4be7-85fa-2f4d40529db4"]`,
+      query: `*[_type == "project" && _id == "drafts.5e94733d-78eb-48d2-9b59-5d7c029b5c33"]`,
     });
 
     console.log("Document deleted successfully:", response);

@@ -70,7 +70,6 @@ export default function Home({
 
 export async function getStaticProps() {
   const homePageData: HomePageData = await getHomePage();
-
   return {
     props: {
       homePageData,
