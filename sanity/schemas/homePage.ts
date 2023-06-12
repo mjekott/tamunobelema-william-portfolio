@@ -14,8 +14,13 @@ export default defineType({
     defineField({
       name: "about",
       title: "About",
-      type: "text",
       validation: (Rule) => Rule.required(),
+      type: "array",
+      of: [
+        {
+          type: "block",
+        },
+      ],
     }),
     defineField({
       name: "process",
