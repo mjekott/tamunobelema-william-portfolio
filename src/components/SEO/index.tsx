@@ -33,6 +33,7 @@ export const SEO = (props: SEOProps) => {
       <meta name="title" content={title} />
       <meta property="twitter:title" content={title} />
       <meta property="og:title" content={title} />
+      <meta name="p:domain_verify" content="127d3355db796ebcb67aa475b230d56e" />
 
       <meta name="description" content={description} />
       <meta property="twitter:description" content={description} />
