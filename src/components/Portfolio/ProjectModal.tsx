@@ -78,6 +78,10 @@ const ProjectModal = ({ show, onClose }: ProjectModalProps) => {
           title=""
           component={ProjectImageCard}
           breakPoints={projectSwiperBreakpoints}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
         />
         <div className="flex justify-between items-center py-5 mt-6 text-md">
           {!isPreviousProjectDisabled && (

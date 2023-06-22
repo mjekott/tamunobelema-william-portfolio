@@ -43,7 +43,8 @@ export default function Home({
       <ProjectContextProvider projects={projects || []}>
         <FeatureSwiperList
           autoplay={{
-            pauseOnMouseEnter: true,
+            delay: 5000,
+            disableOnInteraction: false,
           }}
           prefix="projects"
           data={projects || []}
@@ -61,6 +62,10 @@ export default function Home({
         title="Feedback From Our Clients"
         component={TestimonialCard}
         breakPoints={testimonialBreakPoint}
+        autoplay={{
+          delay: 10000,
+          disableOnInteraction: false,
+        }}
       />
 
       <Footer />

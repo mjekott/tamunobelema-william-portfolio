@@ -36,8 +36,12 @@ const About = ({ about, process }: AboutProps) => {
               breakPoints={testimonialBreakPoint}
               prefix="process"
               data={process}
-              title="My Process"
+              title="Design Philosophies"
               component={ProcessItem}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
             />
           </div>
         </div>
