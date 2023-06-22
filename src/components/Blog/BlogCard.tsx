@@ -2,14 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import userImage from "../../assets/images/userImage.png";
 
-const BlogCard = ({ title, slug, date, isActive = false }: BlogCardProps) => {
+const BlogCard = ({
+  title,
+  slug,
+  date,
+  isActive = false,
+  thumbnail,
+}: BlogCardProps) => {
   return (
     <Link href={`/articles/${slug}`}>
-      <article className="flex  gap-4  py-6 cursor-pointer">
+      <article className="flex  gap-4  py-6 cursor-pointer items-start">
         <Image
-          src={userImage}
+          src={thumbnail ?? userImage}
           className="grayscale"
           height={50}
+          width={50}
           alt="user-image"
           sizes="(max-width: 768px) 264px,
             (max-width: 1024px) 264px,
@@ -37,4 +44,5 @@ type BlogCardProps = {
   slug: string;
   date: string;
   isActive?: boolean;
+  thumbnail: string;
 };

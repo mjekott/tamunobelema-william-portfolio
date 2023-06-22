@@ -22,6 +22,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: "thumbnail",
+      title: "Thumbnail",
+      type: "image",
+    }),
+    defineField({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",

@@ -46,6 +46,7 @@ const ArticlesPage = ({
                       title={item.title}
                       slug={item.slug}
                       key={item.slug}
+                      thumbnail={item.thumbnail}
                     />
                   );
                 })}
@@ -93,6 +94,7 @@ export default ArticlesPage;
 
 export const getStaticProps = async () => {
   const articles = await getAllArticles({ offset: 0 });
+
   return {
     props: {
       articles,

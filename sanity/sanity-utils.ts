@@ -65,6 +65,7 @@ export async function getAllArticles({
     title,
     'slug':slug.current,
     'date':publishedAt,
+    'thumbnail':thumbnail.asset->url,
      content[]{...},
      "total": count(*[_type == "article"]) 
   } | order(date desc)[${start}...${end}]`
@@ -80,6 +81,7 @@ export async function getArticleBySlug(slug: string) {
     title,
     'slug':slug.current,
     'date':publishedAt,
+    'thumbnail':thumbnail.asset->url,
     "total": count(*[_type == "article"]) ,
     content[]{...}
   },

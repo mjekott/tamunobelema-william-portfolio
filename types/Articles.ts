@@ -4,6 +4,7 @@ export type Article = {
   date: string;
   content: any;
   total: number;
+  thumbnail: string;
 };
 
 export interface IArticlePage {
