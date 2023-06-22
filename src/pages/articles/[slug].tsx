@@ -58,6 +58,7 @@ const ArticleDetailPage = ({
                     title={item.title}
                     slug={item.slug}
                     key={item.slug}
+                    thumbnail={item.thumbnail}
                   />
                 );
               })}
