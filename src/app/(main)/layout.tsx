@@ -1,4 +1,5 @@
 import Favicon from "@/components/Favicon";
+import Loader from "@/components/Loader";
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
 
@@ -12,6 +13,7 @@ export default function RootLayout({
       <Header />
       {children}
       <Footer />
+      <Loader />
       <Favicon />
     </>
   );
