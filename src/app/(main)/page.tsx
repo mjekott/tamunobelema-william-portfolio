@@ -1,4 +1,5 @@
 import About from "@/features/homepage/About";
+import Brand from "@/features/homepage/Brand";
 import Hero from "@/features/homepage/Hero/Hero";
 import Projects from "@/features/homepage/Projects";
 import Testimonials from "@/features/homepage/Testimonial";
