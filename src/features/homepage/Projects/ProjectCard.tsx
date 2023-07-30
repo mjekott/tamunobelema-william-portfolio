@@ -1,18 +1,14 @@
 import { shimmer, toBase64 } from "@/utils/image";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import urlFor from "../../../sanity/config/urlFor";
-import { Project } from "../../../types/Project";
+import urlFor from "../../../../sanity/config/urlFor";
+import { Project } from "../../../../types/Project";
 
 type Props = {
   item: Project;
-  index: number;
 };
 
-const FeaturedPortfolioCard = ({ item: project }: Props) => {
-  const [show, setShow] = useState(false);
-
+const ProjectCard = ({ item: project }: Props) => {
   return (
     <>
       <Link
@@ -46,4 +42,4 @@ const FeaturedPortfolioCard = ({ item: project }: Props) => {
   );
 };
 
-export default FeaturedPortfolioCard;
+export default ProjectCard;

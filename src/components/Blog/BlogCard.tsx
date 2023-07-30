@@ -11,7 +11,7 @@ const BlogCard = ({
 }: BlogCardProps) => {
   return (
     <Link href={`/articles/${slug}`}>
-      <article className="flex  gap-4  py-6 cursor-pointer items-start">
+      <article className="flex  gap-4  py-6 cursor-pointer items-start pr-3">
         <Image
           src={thumbnail ?? userImage}
           className="grayscale"

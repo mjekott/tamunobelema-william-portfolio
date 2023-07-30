@@ -1,20 +1,24 @@
+import { shimmer, toBase64 } from "@/utils/image";
+import Image from "next/image";
 import Link from "next/link";
 import urlFor from "../../../sanity/config/urlFor";
-import BlurImage from "../BlurImage";
 
 const sharedClasses = "dark:text-white";
-const bodyClasses = "text-md ";
 
 const RichTextComponents = {
   types: {
     image: ({ value }: any) => {
       return (
         <div className="relative w-full max-w-[500px] mx-auto h-[300px] lg:h-[450px] my-10">
-          <BlurImage
-            className="grayscale hover:grayscale-0 object-cover cursor-pointer"
+          <Image
+            className="grayscale hover:grayscale-0 object-cover "
             src={urlFor(value.asset).url()}
             alt={value.alt || "blog image"}
             fill
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(
+              shimmer(435, 690)
+            )}`}
           />
         </div>
       );

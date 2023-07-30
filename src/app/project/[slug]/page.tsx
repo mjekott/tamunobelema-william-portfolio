@@ -1,5 +1,51 @@
+import { siteConfig } from "@/config/site";
 import ProjectImageSlide from "@/features/projects/ProjectImageSlide";
+import { groq } from "next-sanity";
+import { clientFetch } from "../../../../sanity/config/sanity.client";
+import urlFor from "../../../../sanity/config/urlFor";
 import { getProject } from "../../../../sanity/sanity-utils";
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: {
+    slug: string;
+  };
+}) => {
+  const project = await getProject(params.slug);
+  return {
+    title: project.current.title,
+    openGraph: {
+      images: [urlFor(project.current.mainImage).url()],
+      title: project.current.title,
+      url: `${siteConfig.host}/project/${params.slug}`,
+      siteName: project.current.title,
+      type: "website",
+    },
+  };
+};
+
+// Generate Static Params Function
+export const generateStaticParams = async () => {
+  try {
+    const projects = await clientFetch(groq`*[_type=='project'] [0...20] {
+      'slug': slug.current,
+    }`);
+
+    const params = projects.map((project: any) => {
+      return {
+        slug: project.slug,
+      };
+    });
+
+    return params;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error fetching projects");
+  }
+};
+
+export const revalidate = 60;
 
 const page = async ({ params }: { params: { slug: string } }) => {
   const project = await getProject(params.slug);

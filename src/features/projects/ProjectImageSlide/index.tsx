@@ -1,4 +1,5 @@
 "use client";
+import { SwiperNavButtons } from "@/components/SwiperNav";
 import { shimmer, toBase64 } from "@/utils/image";
 import {
   ChevronLeftIcon,
@@ -6,7 +7,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/solid";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import urlFor from "../../../../sanity/config/urlFor";
@@ -24,7 +25,6 @@ const ProjectImageSlide = ({ images = [] }: { images: any }) => {
     setLightBoxDisplay(true);
   };
 
-  //hide lightbox
   const hideLightBox = () => {
     setLightBoxDisplay(false);
   };
@@ -33,56 +33,33 @@ const ProjectImageSlide = ({ images = [] }: { images: any }) => {
     e.stopPropagation();
     let currentIndex = projectImagesUrl.indexOf(imageToShow);
     if (currentIndex >= projectImagesUrl.length - 1) {
-      setLightBoxDisplay(false);
-    } else {
-      let nextImage = projectImagesUrl[currentIndex + 1];
-      setImageToShow(nextImage);
+      return;
     }
+    let nextImage = projectImagesUrl[currentIndex + 1];
+    setImageToShow(nextImage);
   };
 
   const showPrev = (e: any) => {
     e.stopPropagation();
     let currentIndex = projectImagesUrl.indexOf(imageToShow);
     if (currentIndex <= 0) {
-      setLightBoxDisplay(false);
-    } else {
-      let nextImage = projectImagesUrl[currentIndex - 1];
-      setImageToShow(nextImage);
+      return;
     }
+    let nextImage = projectImagesUrl[currentIndex - 1];
+    setImageToShow(nextImage);
   };
 
-  const swiperRef = useRef<any>();
   return (
     <div>
-      <div className="flex justify-end items-center mb-5 gap-5 lg:mb-12 py-5">
-        <div className="flex items-center gap-5">
-          <button
-            className={`icon-button`}
-            onClick={() => swiperRef.current.slidePrev()}
-          >
-            <ChevronLeftIcon className=" w-4 h-4 " />
-          </button>
-          <button
-            className={`icon-button`}
-            onClick={() => swiperRef.current.slideNext()}
-          >
-            <ChevronRightIcon className=" w-4 h-4 " />
-          </button>
-        </div>
-      </div>
       <Swiper
         slidesPerView={2}
         freeMode={false}
         autoplay={{
           delay: 15000,
-          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         }}
         modules={[Navigation, Autoplay]}
         spaceBetween={50}
-        loop={true}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
         breakpoints={{
           // when window width is >= 320px
           320: {
@@ -98,9 +75,18 @@ const ProjectImageSlide = ({ images = [] }: { images: any }) => {
           640: {
             slidesPerView: 2,
             spaceBetween: 40,
+            slidesPerGroup: 2,
+            slidesPerGroupSkip: 2,
           },
         }}
       >
+        <div
+          className="flex justify-end items-center mb-5 gap-5 lg:mb-12 py-5"
+          slot="container-start"
+        >
+          <SwiperNavButtons />
+        </div>
+
         {projectImagesUrl.map((image, index) => (
           <SwiperSlide key={index} className="h-full">
             <ProjectImageCard image={image} onClick={() => showImage(image)} />
@@ -110,7 +96,7 @@ const ProjectImageSlide = ({ images = [] }: { images: any }) => {
       {lightboxDisplay ? (
         <div
           id="lightbox"
-          className="bg-black/90 backdrop-blur-sm z-50 inset-0 flex items-center justify-between fixed px-4"
+          className="bg-black/90 backdrop-blur-sm z-50 inset-0 flex items-center justify-center fixed px-4"
           onClick={hideLightBox}
         >
           <button className="absolute top-5 right-5">
@@ -121,7 +107,7 @@ const ProjectImageSlide = ({ images = [] }: { images: any }) => {
           </button>
           <button
             onClick={showPrev}
-            className="icon-button absolute bottom-5 left-5 lg:relative"
+            className="icon-button absolute top-1/2 -translate-y-1/2 left-5 "
           >
             <ChevronLeftIcon className=" w-4 h-4 " />
           </button>
@@ -135,10 +121,11 @@ const ProjectImageSlide = ({ images = [] }: { images: any }) => {
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
               shimmer(435, 690)
             )}`}
+            onClick={(e) => e.stopPropagation()}
           />
           <button
             onClick={showNext}
-            className="icon-button absolute bottom-5 right-5 lg:relative"
+            className="icon-button absolute top-1/2 -translate-y-1/2 right-5 "
           >
             <ChevronRightIcon className=" w-4 h-4 " />
           </button>

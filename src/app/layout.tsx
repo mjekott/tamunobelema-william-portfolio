@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config/site";
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
 import localFont from "next/font/local";
@@ -39,6 +40,31 @@ const ppMori = localFont({
     },
   ],
 });
+
+export const metadata = {
+  metadataBase: new URL(siteConfig.host),
+  title: {
+    template: "%s | " + siteConfig.siteName,
+    default: siteConfig.siteName,
+  },
+  description: siteConfig.description,
+  openGraph: {
+    title: siteConfig.siteName,
+    description: siteConfig.description,
+    url: siteConfig.host,
+    siteName: siteConfig.siteName,
+    images: [
+      {
+        url: `${siteConfig.host}/opengraph-image.png`,
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en",
+    type: "website",
+  },
+  themeColor: [{ media: "(prefers-color-scheme: light)", color: "white" }],
+};
 
 export default function RootLayout({
   children,
