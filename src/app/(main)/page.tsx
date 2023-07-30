@@ -3,7 +3,7 @@ import Brand from "@/features/homepage/Brand";
 import Hero from "@/features/homepage/Hero/Hero";
 import Projects from "@/features/homepage/Projects";
 import Testimonials from "@/features/homepage/Testimonial";
-import { getHomePage } from "../../sanity/sanity-utils";
+import { getHomePage } from "../../../sanity/sanity-utils";
 
 export const revalidate = 60;
 

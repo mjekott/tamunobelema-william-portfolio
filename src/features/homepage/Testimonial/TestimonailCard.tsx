@@ -27,12 +27,12 @@ const TestimonialCard = ({ item: testimonial }: Props) => {
           <path
             d="M771 0V11.4998H94.7674H78.0984L66.3371 18.9998L54.5758 11.4998H47.7222H0"
             stroke="#B3B3B6"
-            stroke-opacity="0.2"
+            strokeOpacity="0.2"
           />
           <path
             d="M762.877 4V16.9999H94.7674H78.7754L67.014 24.4999L55.2527 16.9999H47.7222H0"
             stroke="#B3B3B6"
-            stroke-opacity="0.2"
+            strokeOpacity="0.2"
           />
         </svg>
 

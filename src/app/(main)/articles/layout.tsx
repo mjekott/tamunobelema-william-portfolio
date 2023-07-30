@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { getAllArticles } from "../../../sanity/sanity-utils";
+import { getAllArticles } from "../../../../sanity/sanity-utils";
 import Sidebar from "./Sidebar";
 
 const layout = async ({ children }: { children: ReactNode }) => {

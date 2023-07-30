@@ -1,9 +1,9 @@
 import { siteConfig } from "@/config/site";
 import ProjectImageSlide from "@/features/projects/ProjectImageSlide";
 import { groq } from "next-sanity";
-import { clientFetch } from "../../../../sanity/config/sanity.client";
-import urlFor from "../../../../sanity/config/urlFor";
-import { getProject } from "../../../../sanity/sanity-utils";
+import { clientFetch } from "../../../../../sanity/config/sanity.client";
+import urlFor from "../../../../../sanity/config/urlFor";
+import { getProject } from "../../../../../sanity/sanity-utils";
 
 export const generateMetadata = async ({
   params,
