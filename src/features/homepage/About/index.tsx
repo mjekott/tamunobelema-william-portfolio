@@ -17,9 +17,9 @@ const About = ({ about, process }: AboutProps) => {
       <div className="flex flex-col lg:flex-row space-y-10 lg:space-y-0  divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-[#292929]">
         <div className="lg:w-1/2  lg:pr-20 px-4">
           <p className="text-2xl mb-5 font-semibold">About Me</p>
-          <p className="text-md text-gray-light prose space-y-4 flex flex-col">
+          <div className=" text-gray-light">
             <PortableText value={about} components={RichTextComponents} />
-          </p>
+          </div>
         </div>
         <div className="flex-1  lg:py-0 lg:px-20">
           <div className="hidden lg:block">
@@ -35,35 +35,37 @@ const About = ({ about, process }: AboutProps) => {
             </div>
           </div>
 
-          <Swiper
-            slidesPerView={1}
-            freeMode={false}
-            autoplay={{
-              delay: 10000,
-              disableOnInteraction: false,
-            }}
-            modules={[Navigation, Autoplay]}
-            spaceBetween={50}
-            className="!w-fit lg:hidden px-4"
-          >
-            <div slot="container-start">
-              <div className="flex justify-between items-center mb-5 gap-5 lg:mb-12 py-5">
-                <h2 className="text-xl lg:text-4xl  font-semibold">
-                  Design Philosophies
-                </h2>
+          <div className="lg:hidden">
+            <Swiper
+              slidesPerView={1}
+              freeMode={false}
+              autoplay={{
+                delay: 10000,
+                disableOnInteraction: false,
+              }}
+              modules={[Navigation, Autoplay]}
+              spaceBetween={50}
+              className="!w-fit lg:hidden px-4"
+            >
+              <span slot="container-start">
+                <div className="flex justify-between items-center mb-5 gap-5 lg:mb-12 py-5">
+                  <h2 className="text-xl lg:text-4xl  font-semibold">
+                    Design Philosophies
+                  </h2>
 
-                <div className="flex items-center gap-5">
-                  <SwiperNavButtons />
+                  <div className="flex items-center gap-5">
+                    <SwiperNavButtons />
+                  </div>
                 </div>
-              </div>
-            </div>
+              </span>
 
-            {process.map((item, index) => (
-              <SwiperSlide key={index} className="h-full">
-                <ProcessItem item={item} index={index} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+              {process.map((item, index) => (
+                <SwiperSlide key={index} className="h-full">
+                  <ProcessItem item={item} index={index} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </div>
     </div>

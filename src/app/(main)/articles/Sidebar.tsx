@@ -6,8 +6,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { useState } from "react";
-import { getAllArticles } from "../../../sanity/sanity-utils";
-import { Article } from "../../../types/Articles";
+import { getAllArticles } from "../../../../sanity/sanity-utils";
+import { Article } from "../../../../types/Articles";
 
 const Sidebar = ({ articles = [] }: { articles: Article[] }) => {
   const params = useParams();

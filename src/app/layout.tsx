@@ -1,6 +1,4 @@
 import { siteConfig } from "@/config/site";
-import Footer from "@/layout/Footer";
-import Header from "@/layout/Header/Header";
 import localFont from "next/font/local";
 import "swiper/swiper.min.css";
 import "./globals.css";
@@ -74,9 +72,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`text-white bg-[#111111] ${ppMori.className}`}>
-        <Header />
         <Provider>{children}</Provider>
-        <Footer />
       </body>
     </html>
   );

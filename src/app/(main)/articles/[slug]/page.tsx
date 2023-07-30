@@ -4,9 +4,9 @@ import BackButton from "@/layout/BackButton";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { groq } from "next-sanity";
 import Link from "next/link";
-import { clientFetch } from "../../../../sanity/config/sanity.client";
-import { getArticleBySlug } from "../../../../sanity/sanity-utils";
-import { IArticlePage } from "../../../../types/Articles";
+import { clientFetch } from "../../../../../sanity/config/sanity.client";
+import { getArticleBySlug } from "../../../../../sanity/sanity-utils";
+import { IArticlePage } from "../../../../../types/Articles";
 
 export const generateMetadata = async ({
   params,

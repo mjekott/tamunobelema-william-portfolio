@@ -1,7 +1,7 @@
 import BlogContent from "@/components/Blog/BlogContent";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
-import { getAllArticles } from "../../../sanity/sanity-utils";
+import { getAllArticles } from "../../../../sanity/sanity-utils";
 
 export const metadata = {
   title: "Articles",

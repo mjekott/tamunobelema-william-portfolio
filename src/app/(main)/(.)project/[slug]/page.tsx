@@ -1,7 +1,7 @@
 import ProjectImageSlide from "@/features/projects/ProjectImageSlide";
 import BackButton from "@/layout/BackButton";
 import Link from "next/link";
-import { getProject } from "../../../../sanity/sanity-utils";
+import { getProject } from "../../../../../sanity/sanity-utils";
 
 export const revalidate = 60;
 
