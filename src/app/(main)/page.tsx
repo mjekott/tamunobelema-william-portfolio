@@ -15,7 +15,7 @@ const page = async () => {
         <Hero />
         <Projects projects={data.projects} />
         <About about={data.homeData.about} process={data.homeData.process} />
-        {/*      <Brand brands={data.homeData.brand} /> */}
+        <Brand brands={data.homeData.brand} />
         <Testimonials testimonials={data.homeData.testimonials} />
       </>
     );
