@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 import { HomePageData } from "../types/HomePage";
 import { IProjectDetails, Project } from "../types/Project";
-import { default as client } from "./config/sanity.client";
+import { clientFetch } from "./config/sanity.client";
 
 const getProjectQuery = groq`*[_type=='project']{
   _id,
@@ -16,11 +16,11 @@ const getProjectQuery = groq`*[_type=='project']{
 }| order(publishedAt desc)`;
 
 export async function getProjects(): Promise<Project[]> {
-  return client.fetch(getProjectQuery);
+  return clientFetch(getProjectQuery);
 }
 
 export async function getProject(slug: string): Promise<IProjectDetails> {
-  const results = await client.fetch(
+  const results = await clientFetch(
     `*[_type == 'project' && slug.current == $slug]{
         "current": { 
           "slug": slug.current,description,title,images,'mainImage':mainImage.asset->url,publishedAt
@@ -44,7 +44,7 @@ export async function getHomePage(): Promise<HomePageData> {
     testimonials,
   }[0]`;
 
-  return client.fetch(`{
+  return clientFetch(`{
     'homeData': ${homePageRequest},
     'projects':${getProjectQuery},
   }`);
@@ -59,7 +59,7 @@ export async function getAllArticles({
 }) {
   const start = offset * skip;
   const end = start + skip;
-  const result = await client.fetch(
+  const result = await clientFetch(
     groq`*[_type=='article']{
       _id,
     title,
@@ -75,7 +75,7 @@ export async function getAllArticles({
 }
 
 export async function getArticleBySlug(slug: string) {
-  return client.fetch(
+  return clientFetch(
     `*[_type=='article' && slug.current == $slug]{
   "current":{
     title,
@@ -93,16 +93,4 @@ export async function getArticleBySlug(slug: string) {
   }}[0]`,
     { slug }
   );
-}
-
-export async function deleteProject() {
-  try {
-    const response = await client.delete({
-      query: `*[_type == "project" && _id == "drafts.5e94733d-78eb-48d2-9b59-5d7c029b5c33"]`,
-    });
-
-    console.log("Document deleted successfully:", response);
-  } catch (error) {
-    console.error("Error deleting document:", error);
-  }
 }

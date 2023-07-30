@@ -1,10 +1,11 @@
+"use client";
 import { PortableText } from "@portabletext/react";
 import RichTextComponents from "../RichTextComponent";
 
 const BlogContent = ({ title, date, content }: BlogContentProps) => {
   return (
     <article className="py-5">
-      {/*    <header className="flex gap-2 md:gap-6   py-5">
+      {/*  <header className="flex gap-2 md:gap-6   py-5">
         <div className="flex flex-col gap-2  w-full md:gap-1">
           <h2 className="font-semibold text-2xl md:text-4xl capitalize">
             {title}

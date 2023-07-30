@@ -1,3 +1,4 @@
+"use client";
 import { FooterLinks } from "@/assets/data/FooterLinks";
 import userImage from "@/assets/images/userImage.png";
 import Image from "next/image";
