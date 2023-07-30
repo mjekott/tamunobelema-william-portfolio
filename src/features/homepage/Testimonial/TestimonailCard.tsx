@@ -1,7 +1,6 @@
 import Image from "next/image";
-import urlFor from "../../../sanity/config/urlFor";
-import { Testimonial } from "../../../types/HomePage";
-import TestimonialBorderSvg from "../../assets/testimonial-border.svg";
+import urlFor from "../../../../sanity/config/urlFor";
+import { Testimonial } from "../../../../types/HomePage";
 
 interface Props {
   item: Testimonial;
@@ -13,13 +12,30 @@ const TestimonialCard = ({ item: testimonial }: Props) => {
       <div className="mb-2">
         <div className="border-l-2 ease-out border-white px-4 ">
           <p className=" italic">
-            {' "'}
             {testimonial.comment} {' "'}
           </p>
         </div>
       </div>
       <div className="sm:mt-auto">
-        <TestimonialBorderSvg />
+        <svg
+          width="772"
+          height="26"
+          viewBox="0 0 772 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M771 0V11.4998H94.7674H78.0984L66.3371 18.9998L54.5758 11.4998H47.7222H0"
+            stroke="#B3B3B6"
+            stroke-opacity="0.2"
+          />
+          <path
+            d="M762.877 4V16.9999H94.7674H78.7754L67.014 24.4999L55.2527 16.9999H47.7222H0"
+            stroke="#B3B3B6"
+            stroke-opacity="0.2"
+          />
+        </svg>
+
         <div className="flex items-center gap-4 py-4">
           <div className="relative w-[41px] flex-shrink-0 lg:w-[100px]  h-[41px] lg:h-[100px] rounded-full overflow-hidden">
             <Image

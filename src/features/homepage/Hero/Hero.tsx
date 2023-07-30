@@ -1,5 +1,5 @@
-import RightLogo from "../../../../assets/right-logo.svg";
-import LeftLogo from "./image/left-logo.svg";
+import LeftBg from "./image/LeftBg";
+import RightBg from "./image/RightBg";
 
 const services = [
   {
@@ -27,8 +27,8 @@ const services = [
 const Hero = () => {
   return (
     <div className="relative min-h-[60vh]  lg:min-h-[70vh] mb-1 lg:mb-20">
-      <LeftLogo className="absolute lg:h-[255px] lg:w-[232px] w-[70px] h-[132px]  lg:bottom-[10%] bottom-[20%] " />
-      <RightLogo className="absolute z-0 right-0 lg:h-[340px] lg:w-[400px] h-[200px] w-[120px] top-[1%]  lg:top-[10%]  " />
+      <LeftBg className="absolute lg:h-[255px] lg:w-[232px] w-[70px] h-[132px]  lg:bottom-[10%] bottom-[20%] " />
+      <RightBg className="absolute z-0 right-0 lg:h-[340px] lg:w-[400px] h-[200px] w-[120px] top-[1%]  lg:top-[10%]  " />
       <div className="container relative h-full z-10 p-4">
         <div className=" py-2 lg:py-10">
           <p className="text-[2.25rem] leading-snug lg:text-[128px] lg:leading-[130px] font-semibold">

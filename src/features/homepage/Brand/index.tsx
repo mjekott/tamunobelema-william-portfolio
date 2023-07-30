@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
-import urlFor from "../../../../../sanity/config/urlFor";
-import { IBrand } from "../../../../../types/HomePage";
+import urlFor from "../../../../sanity/config/urlFor";
+import { IBrand } from "../../../../types/HomePage";
 
 const Brand = ({ brands }: BrandProps) => {
   return (

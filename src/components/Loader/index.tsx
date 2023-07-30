@@ -1,19 +1,33 @@
 "use client";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const Loader = () => {
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    const handleTimeOut = setTimeout(() => {
+      setShow(false);
+    }, 3000);
+
+    () => {
+      clearTimeout(handleTimeOut);
+    };
+  }, []);
+  if (!show) {
+    return null;
+  }
   return (
     <motion.div
       initial={{ opacity: 1 }}
       animate={{
         opacity: [1, 0],
-        display: "none",
       }}
       transition={{
-        duration: 6,
+        duration: 5,
         ease: "backInOut",
       }}
-      className="min-h-screen min-w-screen bg-black fixed inset-0 flex z-50 flex-col gap-2 justify-center items-center"
+      className="min-h-screen flex min-w-screen bg-black fixed inset-0 z-50 flex-col gap-2 justify-center items-center"
     >
       <svg
         width="112"
