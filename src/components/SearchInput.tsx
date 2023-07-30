@@ -1,3 +1,4 @@
+"use client";
 import userImage from "@/assets/images/userImage.png";
 import useClickOutside from "@/hooks/useClickOutside";
 import { groq } from "next-sanity";

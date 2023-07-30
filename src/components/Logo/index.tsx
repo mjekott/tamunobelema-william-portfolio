@@ -1,3 +1,4 @@
+"use client";
 import { motion, useAnimation } from "framer-motion";
 import { SVGProps, useState } from "react";
 
@@ -17,6 +18,7 @@ const variant2 = {
     y: 0,
   },
 };
+
 const Logo = (props: SVGProps<SVGSVGElement>) => {
   const [isHovered, setIsHovered] = useState(false);
   function handleMouseEnter() {
