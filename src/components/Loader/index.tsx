@@ -1,13 +1,20 @@
-import dynamic from "next/dynamic";
-
-const Path = dynamic(() =>
-  import("framer-motion").then((mod) => mod.motion.path)
-);
-
+"use client";
+import { motion } from "framer-motion";
 
 const Loader = () => {
   return (
-    <div className="min-h-screen min-w-screen flex flex-col gap-2 justify-center items-center">
+    <motion.div
+      initial={{ opacity: 1 }}
+      animate={{
+        opacity: [1, 0],
+        display: "none",
+      }}
+      transition={{
+        duration: 6,
+        ease: "backInOut",
+      }}
+      className="min-h-screen min-w-screen bg-black fixed inset-0 flex z-50 flex-col gap-2 justify-center items-center"
+    >
       <svg
         width="112"
         height="113"
@@ -15,7 +22,7 @@ const Loader = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <Path
+        <motion.path
           initial={{ opacity: 0 }}
           animate={{
             y: [10, 0, 10],
@@ -29,7 +36,7 @@ const Loader = () => {
           d="M65.9231 47.2069V80.23C65.9231 81.6041 65.4711 82.655 64.5671 83.3827C63.6225 84.0698 62.7185 84.4133 61.8551 84.4133C61.353 84.4338 60.8524 84.3469 60.3866 84.1582C59.9208 83.9696 59.5007 83.6836 59.1544 83.3194C58.4674 82.5465 58.1239 81.5167 58.1239 80.23V78.5938H52.9259V80.23C52.9259 81.5182 52.5831 82.548 51.8976 83.3194C51.2105 84.0502 50.2885 84.4148 49.1313 84.4133C48.2725 84.4133 47.3934 84.0698 46.4939 83.3827C45.5492 82.655 45.0769 81.6041 45.0769 80.23V47.2069H39.8021V80.23C39.8021 83.0626 40.7889 85.3572 42.7627 87.114C44.7771 88.8316 46.9 89.6896 49.1313 89.6881C50.3407 89.7023 51.5415 89.4836 52.6682 89.044C53.7378 88.6025 54.7026 87.9411 55.5 87.1027C56.3128 87.9229 57.2737 88.5816 58.3318 89.044C59.4585 89.4836 60.6593 89.7023 61.8687 89.6881C64.1423 89.6881 66.2652 88.8301 68.2374 87.114C70.2096 85.3557 71.1965 83.0611 71.198 80.23V47.2069H65.9231Z"
           fill="white"
         />
-        <Path
+        <motion.path
           initial={{ opacity: 0 }}
           animate={{
             y: [-10, 0, -10],
@@ -44,8 +51,7 @@ const Loader = () => {
           fill="white"
         />
       </svg>
-
-    </div>
+    </motion.div>
   );
 };
 

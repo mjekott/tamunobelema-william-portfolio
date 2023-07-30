@@ -1,90 +1,80 @@
+"use client";
 import { socialLinks } from "@/assets/data/socialLinks";
 import Logo from "@/components/Logo";
-import useOnClickOutside from "@/utils/useClickOutside";
+import { cn } from "@/utils/cn";
 import { List, X } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const XIcon = motion(X);
 const ListIcon = motion(List);
 
 const MobileNavigation = () => {
   const [showNav, setShowNav] = useState(false);
-  const mobileRef = useRef<any>();
-  useOnClickOutside(mobileRef, () => {
-    setShowNav(false);
-  });
 
-  const handleIconClick = () => {
-    setTimeout(() => {
-      setShowNav((prev) => !prev);
-    }, 1000);
-  };
+  const toggleNav = () => setShowNav((prev) => !prev);
 
-  useEffect(() => {
-    if (showNav) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.classList.add("no-scroll");
-    }
-  }, [showNav]);
   return (
-    <div
-      className="h-[10vh] sticky top-0 bg-[#111111] z-40 md:hidden py-4  w-full p-0"
-      ref={mobileRef}
-    >
-      <div className=" flex flex-col container p-0">
-        <div className="text-base h-full  flex justify-between items-center px-4">
-          <Link href="/">
-            <Logo />
-          </Link>
-          <button
-            onClick={() => setShowNav((prev) => !prev)}
-            className="text-white"
-          >
-            {!showNav ? (
-              <ListIcon
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeInOut",
-                }}
-                exit={{ opacity: 0 }}
-                size={32}
-              />
-            ) : (
-              <XIcon
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeInOut",
-                }}
-                exit={{ opacity: 0 }}
-                size={32}
-              />
-            )}
-          </button>
-        </div>
-        <div
-          className={` z-40 flex justify-center items-center flex-col  h-[90vh] overflow-hidden bg-[#111111]  mt-0 w-full rounded  ${
-            !showNav && "hidden opacity-0"
-          }`}
+    <div className="h-[10vh] sticky top-0 bg-[#111111] z-40 md:hidden  w-full p-0">
+      <div className="text-base h-full container relative z-50 flex justify-between items-center px-4">
+        <Link href="/">
+          <Logo />
+        </Link>
+        <button
+          onClick={() => {
+            toggleNav();
+          }}
+          className="text-white"
         >
-          <ul
-            className="space-y-5 text-lg transform -translate-y-[50%] "
-            onClick={handleIconClick}
-          >
-            <li className="hover:opacity-75 text-center ">
-              <Link href="/articles">Articles</Link>
+          {!showNav ? (
+            <ListIcon
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.6,
+                ease: "easeInOut",
+              }}
+              exit={{ opacity: 0 }}
+              size={32}
+            />
+          ) : (
+            <XIcon
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.6,
+                ease: "easeInOut",
+              }}
+              exit={{ opacity: 0 }}
+              size={32}
+            />
+          )}
+        </button>
+      </div>
+      {showNav && (
+        <motion.div
+          initial={{ x: "-100%" }}
+          animate={{ x: 0 }}
+          transition={{
+            duration: 0.3,
+          }}
+          className={cn(
+            `z-40 fixed bottom-0  w-full   justify-center items-center flex-col flex  h-[90vh] bg-[#111111] `
+          )}
+        >
+          <ul className="space-y-5 text-lg transform -translate-y-[50%] ">
+            <li className="hover:opacity-75 text-center text-xl">
+              <Link href="/articles" onClick={toggleNav}>
+                Articles
+              </Link>
             </li>
-            <li className="hover:opacity-75 ">
+            <li className="hover:opacity-75 text-xl">
               <Link
                 href="https://www.youtube.com/@tamunobelema"
                 rel="noopener noreferrer"
                 target="__blank"
+                onClick={toggleNav}
               >
                 Education
               </Link>
@@ -93,14 +83,19 @@ const MobileNavigation = () => {
           <ul className="flex space-x-8 items-center mt-5 transform -translate-y-[100%]">
             {socialLinks.map(({ href, name, icon: Icon }) => (
               <li key={name} className="hover:opacity-75 cursor-pointer ">
-                <Link href={href} rel="noopener noreferrer" target="__blank">
-                  <Icon size={22} />
+                <Link
+                  href={href}
+                  rel="noopener noreferrer"
+                  target="__blank"
+                  onClick={toggleNav}
+                >
+                  <Icon size={28} />
                 </Link>
               </li>
             ))}
           </ul>
-        </div>
-      </div>
+        </motion.div>
+      )}
     </div>
   );
 };

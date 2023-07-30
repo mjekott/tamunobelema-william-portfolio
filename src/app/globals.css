@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .icon-button {
+    @apply bg-white transition-all disabled:bg-transparent disabled:text-gray-50 disabled:cursor-not-allowed duration-500 ease-in-out rounded-full hover:text-white  hover:bg-opacity-95 hover:text-black border-2 border-white h-8 w-8 lg:h-12 lg:w-12  text-black flex justify-center items-center;
+  }
+}
+
+img {
+  user-select: none;
+}
+
+.swiper-slide {
+  height: auto !important;
+}
