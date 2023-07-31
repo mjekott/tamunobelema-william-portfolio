@@ -1,5 +1,4 @@
 "use client";
-import Head from "next/head";
 import { useEffect, useState } from "react";
 
 interface SEOProps {
@@ -8,7 +7,7 @@ interface SEOProps {
   image_url?: string;
 }
 
-const Favicon = (props: SEOProps) => {
+const Favicon = () => {
   const [faviconHref, setFaviconHref] = useState("/favicon-light.ico");
 
   useEffect(() => {
@@ -20,11 +19,7 @@ const Favicon = (props: SEOProps) => {
     }
   }, []);
 
-  return (
-    <Head>
-      <link rel="shortcut icon" href={faviconHref} />
-    </Head>
-  );
+  return <link rel="icon" href={faviconHref} />;
 };
 
 export default Favicon;

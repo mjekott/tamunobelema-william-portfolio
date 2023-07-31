@@ -57,8 +57,8 @@ const SearchInput = () => {
     <div className="relative w-full max-w-lg" ref={ref}>
       <div>
         <input
-          type="search"
-          className="block w-full flex-1 py-2 px-3 text-gray-100 border border-slate-300 focus:border-gray-100 focus:outline-none bg-transparent"
+          type="text"
+          className="block w-full flex-1 py-2 px-3 text-gray-100 border accent-white border-slate-300 focus:border-gray-100 focus:outline-none bg-transparent"
           placeholder="Start Typing..."
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}

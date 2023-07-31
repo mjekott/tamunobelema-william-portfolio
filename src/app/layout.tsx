@@ -1,3 +1,4 @@
+import Favicon from "@/components/Favicon";
 import Loader from "@/components/Loader";
 import { siteConfig } from "@/config/site";
 import localFont from "next/font/local";
@@ -75,6 +76,7 @@ export default function RootLayout({
       <body className={`text-white bg-[#111111] relative ${ppMori.className}`}>
         <Provider>{children}</Provider>
         <Loader />
+        <Favicon />
       </body>
     </html>
   );
