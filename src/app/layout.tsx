@@ -1,3 +1,4 @@
+import Loader from "@/components/Loader";
 import { siteConfig } from "@/config/site";
 import localFont from "next/font/local";
 import "swiper/swiper.min.css";
@@ -71,8 +72,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`text-white bg-[#111111] ${ppMori.className}`}>
+      <body className={`text-white bg-[#111111] relative ${ppMori.className}`}>
         <Provider>{children}</Provider>
+        <Loader />
       </body>
     </html>
   );

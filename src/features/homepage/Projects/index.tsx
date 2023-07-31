@@ -28,12 +28,10 @@ const Projects = ({ projects }: ProjectsProps) => {
           640: {
             slidesPerView: 2,
             spaceBetween: 40,
-            slidesPerGroup: 2,
           },
           1024: {
             slidesPerView: 3,
             spaceBetween: 40,
-            slidesPerGroup: 3,
           },
         }}
       >
