@@ -1,3 +1,4 @@
+
 import Favicon from "@/components/Favicon";
 import Loader from "@/components/Loader";
 import { siteConfig } from "@/config/site";

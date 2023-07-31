@@ -9,7 +9,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className="bg-black overflow-y-auto   inset-0 fixed h-full w-full z-50 min-h-screen pb-20">
-      <BackButton />
+      <BackButton href="/#projects" />
       <div className="container relative p-4 py-10">
         <div className="relative py-10">
           <div className="flex justify-between flex-col md:flex-row">
