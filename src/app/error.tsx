@@ -8,6 +8,7 @@ const Error = () => {
   return (
     <div className="bg-[#111111] flex justify-center items-center flex-col min-h-screen">
       <Logo />
+
       <h2 className="text-white text-3xl my-5 text-center">
         Opps something went wrong !!
       </h2>
