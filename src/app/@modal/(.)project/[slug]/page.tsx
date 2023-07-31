@@ -2,6 +2,8 @@ import ProjectImageSlide from "@/features/projects/ProjectImageSlide";
 import BackButton from "@/layout/BackButton";
 import { getProject } from "../../../../../sanity/sanity-utils";
 
+export const revalidate = 300;
+
 const page = async ({ params }: { params: { slug: string } }) => {
   const project = await getProject(params.slug);
 
