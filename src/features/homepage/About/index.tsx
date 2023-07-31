@@ -35,7 +35,7 @@ const About = ({ about, process }: AboutProps) => {
             </div>
           </div>
 
-          <div className="lg:hidden">
+          <div className="lg:hidden container px-4 mt-5 ">
             <Swiper
               slidesPerView={1}
               freeMode={false}
@@ -45,7 +45,6 @@ const About = ({ about, process }: AboutProps) => {
               }}
               modules={[Navigation, Autoplay]}
               spaceBetween={50}
-              className="!w-fit lg:hidden px-4"
             >
               <span slot="container-start">
                 <div className="flex justify-between items-center mb-5 gap-5 lg:mb-12 py-5">

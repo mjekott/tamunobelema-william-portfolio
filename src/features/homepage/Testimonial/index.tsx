@@ -33,7 +33,6 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
           640: {
             slidesPerView: 2,
             spaceBetween: 40,
-            slidesPerGroup: 2,
           },
         }}
       >

@@ -10,7 +10,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className="bg-black overflow-y-auto   inset-0 fixed h-full w-full z-50 min-h-screen pb-20">
-      <BackButton />
+      <BackButton href="/#projects" />
       <div className="container relative p-4 py-10">
         <div className="relative py-10">
           <div className="flex justify-between flex-col md:flex-row">
@@ -33,7 +33,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
       <div className="container px-4">
         <ProjectImageSlide images={project.current.images} />
         <div className="flex justify-between items-center py-5 mt-6 text-md">
-          {project.next?.slug && (
+          {typeof project.next?.slug !== "undefined" && (
             <Link
               href={`/project/${project.next?.slug}`}
               className=" font-normal lg:text-xl"
@@ -41,7 +41,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
               Previous Project
             </Link>
           )}
-          {project.previous?.slug && (
+          {typeof project.previous?.slug !== "undefined" && (
             <Link
               href={`/project/${project.previous?.slug}`}
               className=" font-normal ml-auto lg:text-xl"
