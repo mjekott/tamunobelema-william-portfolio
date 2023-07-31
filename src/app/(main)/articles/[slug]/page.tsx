@@ -53,7 +53,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className="fixed z-50 bg-[#111111]  inset-0 px-4 lg:px-0 lg:relative overflow-y-auto py-20 lg:py-0">
-      <BackButton className="lg:hidden" href="/articles" />
+      <BackButton className="lg:hidden" />
       <BlogContent {...article?.current} />
       <div className="w-full flex  justify-between items-center ">
         <Link

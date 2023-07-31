@@ -3,13 +3,7 @@ import { cn } from "@/utils/cn";
 import { X } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 
-const BackButton = ({
-  href,
-  className,
-}: {
-  href?: string;
-  className?: String;
-}) => {
+const BackButton = ({ className }: { className?: String }) => {
   const router = useRouter();
   return (
     <div
@@ -19,10 +13,7 @@ const BackButton = ({
       )}
       id="back-button"
     >
-      <button
-        aria-label="Close"
-        onClick={() => (href ? router.push(href) : router.back())}
-      >
+      <button aria-label="Close" onClick={() => router.back()}>
         <X size="32" />
       </button>
     </div>

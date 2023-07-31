@@ -1,18 +1,15 @@
-import Favicon from "@/components/Favicon";
+
+
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
+import { ReactNode } from "react";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <Header />
       {children}
       <Footer />
-      <Favicon />
     </>
   );
 }

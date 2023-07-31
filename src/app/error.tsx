@@ -3,7 +3,8 @@ import Logo from "@/components/Logo";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const Error = () => {
+const Error = (props: any) => {
+  console.log(props);
   const router = useRouter();
   return (
     <div className="bg-[#111111] flex justify-center items-center flex-col min-h-screen">

@@ -12,7 +12,7 @@ const Projects = ({ projects }: ProjectsProps) => {
       <Swiper
         slidesPerView={3}
         autoplay={{
-          delay: 5000,
+          delay: 30000,
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }}

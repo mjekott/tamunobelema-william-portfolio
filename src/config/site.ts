@@ -5,8 +5,8 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  host: "https://www.tamunobelemawilliam.com/",
-  siteName: "tamunobelemawilliam",
+  host: "Tamunobelema William | Design Storyteller",
+  siteName: "",
   description:
     "I'm committed to a lifetime of creating new and incredible spatial stories that redefine user experiences.",
 };
