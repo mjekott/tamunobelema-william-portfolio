@@ -1,8 +1,8 @@
-
 import Favicon from "@/components/Favicon";
 import Loader from "@/components/Loader";
 import { siteConfig } from "@/config/site";
 import localFont from "next/font/local";
+import { ReactNode } from "react";
 import "swiper/swiper.min.css";
 import "./globals.css";
 import Provider from "./provider";
@@ -43,7 +43,6 @@ const ppMori = localFont({
 });
 
 export const metadata = {
-  metadataBase: new URL(siteConfig.host),
   title: {
     template: "%s | " + siteConfig.siteName,
     default: siteConfig.siteName,
@@ -69,13 +68,17 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
+  modal: ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`text-white bg-[#111111] relative ${ppMori.className}`}>
-        <Provider>{children}</Provider>
+        <Provider>
+          {children} {modal}
+        </Provider>
         <Loader />
         <Favicon />
       </body>

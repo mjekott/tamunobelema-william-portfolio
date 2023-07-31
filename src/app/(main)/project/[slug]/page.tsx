@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site";
 import ProjectImageSlide from "@/features/projects/ProjectImageSlide";
 import { groq } from "next-sanity";
+import { notFound } from "next/navigation";
 import { clientFetch } from "../../../../../sanity/config/sanity.client";
 import urlFor from "../../../../../sanity/config/urlFor";
 import { getProject } from "../../../../../sanity/sanity-utils";
@@ -13,13 +14,18 @@ export const generateMetadata = async ({
   };
 }) => {
   const project = await getProject(params.slug);
+  if (!project) {
+    return {
+      title: "Not Found",
+    };
+  }
   return {
-    title: project.current.title,
+    title: project?.current.title,
     openGraph: {
-      images: [urlFor(project.current.mainImage).url()],
-      title: project.current.title,
+      images: [urlFor(project?.current.mainImage)?.url()],
+      title: project?.current.title,
       url: `${siteConfig.host}/project/${params.slug}`,
-      siteName: project.current.title,
+      siteName: project?.current.title,
       type: "website",
     },
   };
@@ -49,6 +55,9 @@ export const revalidate = 60;
 
 const page = async ({ params }: { params: { slug: string } }) => {
   const project = await getProject(params.slug);
+  if (!project) {
+    return notFound();
+  }
 
   return (
     <>

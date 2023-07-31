@@ -1,6 +1,7 @@
 "use client";
 
 import { SwiperNavButtons } from "@/components/SwiperNav";
+import Link from "next/link";
 import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Project } from "../../../../types/Project";
@@ -8,11 +9,12 @@ import ProjectCard from "./ProjectCard";
 
 const Projects = ({ projects }: ProjectsProps) => {
   return (
-    <div className="container px-4" id="projects">
+    <div className="container px-4">
+      <Link href="/blog/1">blog</Link>
       <Swiper
         slidesPerView={3}
         autoplay={{
-          delay: 30000,
+          delay: 10000,
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }}

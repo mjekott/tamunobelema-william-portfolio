@@ -1,5 +1,3 @@
-
-
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header/Header";
 import { ReactNode } from "react";

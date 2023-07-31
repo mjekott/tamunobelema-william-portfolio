@@ -111,18 +111,20 @@ const ProjectImageSlide = ({ images = [] }: { images: any }) => {
           >
             <ChevronLeftIcon className=" w-4 h-4 " />
           </button>
-          <Image
-            width={435}
-            height={690}
-            alt="lightbox-image"
-            className="object-cover h-auto w-auto"
-            src={imageToShow}
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer(435, 690)
-            )}`}
-            onClick={(e) => e.stopPropagation()}
-          />
+          {imageToShow && (
+            <Image
+              width={435}
+              height={690}
+              alt="lightbox-image"
+              className="object-cover h-auto w-auto"
+              src={imageToShow}
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                shimmer(435, 690)
+              )}`}
+              onClick={(e) => e.stopPropagation()}
+            />
+          )}
           <button
             onClick={showNext}
             className="icon-button absolute top-1/2 -translate-y-1/2 right-5 "

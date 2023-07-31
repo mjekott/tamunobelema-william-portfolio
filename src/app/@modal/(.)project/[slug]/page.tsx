@@ -2,14 +2,12 @@ import ProjectImageSlide from "@/features/projects/ProjectImageSlide";
 import BackButton from "@/layout/BackButton";
 import { getProject } from "../../../../../sanity/sanity-utils";
 
-export const revalidate = 60;
-
 const page = async ({ params }: { params: { slug: string } }) => {
   const project = await getProject(params.slug);
 
   return (
     <div className="bg-black overflow-y-auto   inset-0 fixed h-full w-full z-50 min-h-screen pb-20">
-      <BackButton href="/#projects" />
+      <BackButton />
       <div className="container relative p-4 py-10">
         <div className="relative py-10">
           <div className="flex justify-between flex-col md:flex-row">
