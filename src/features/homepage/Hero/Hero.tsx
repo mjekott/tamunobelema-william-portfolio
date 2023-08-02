@@ -26,7 +26,7 @@ const services = [
 ];
 const Hero = () => {
   return (
-    <div className="relative min-h-[60vh]  lg:min-h-[70vh] mb-1 lg:mb-20">
+    <div className="relative min-h-[80vh]  lg:min-h-[70vh] mb-1 lg:mb-20">
       <LeftBg className="absolute lg:h-[255px] lg:w-[232px] w-[70px] h-[132px]  lg:bottom-[10%] bottom-[20%] " />
       <RightBg className="absolute z-0 right-0 lg:h-[340px] lg:w-[400px] h-[200px] w-[120px] top-[1%]  lg:top-[10%]  " />
       <div className="container relative h-full z-10 p-4">
