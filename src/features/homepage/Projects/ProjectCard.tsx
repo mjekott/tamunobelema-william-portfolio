@@ -14,6 +14,7 @@ const ProjectCard = ({ item: project }: Props) => {
       <Link
         href={`/project/${project.slug}`}
         className="cursor-pointer h-full "
+        prefetch={false}
       >
         <div className="flex flex-col h-full">
           <div className="relative lg:h-[530px] h-[269px]">
@@ -21,7 +22,6 @@ const ProjectCard = ({ item: project }: Props) => {
               src={project?.mainImage ? urlFor(project?.mainImage).url() : ""}
               fill
               alt="feature-image"
-              priority
               className="grayscale hover:grayscale-0 object-cover"
               placeholder="blur"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(
