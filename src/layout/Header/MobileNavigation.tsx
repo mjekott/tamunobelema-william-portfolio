@@ -24,6 +24,7 @@ const MobileNavigation = () => {
               toggleNav();
             }
           }}
+          aria-label="Home"
         >
           <svg
             width="48"
@@ -48,6 +49,7 @@ const MobileNavigation = () => {
             toggleNav();
           }}
           className="text-white"
+          aria-label="Menu"
         >
           {!showNav ? (
             <ListIcon
@@ -85,7 +87,7 @@ const MobileNavigation = () => {
         >
           <ul className="space-y-5 flex flex-col  text-lg  mb-10">
             <li className="hover:opacity-75 text-center text-xl">
-              <Link href="/articles" onClick={toggleNav}>
+              <Link href="/articles" onClick={toggleNav} prefetch={false}>
                 Articles
               </Link>
             </li>

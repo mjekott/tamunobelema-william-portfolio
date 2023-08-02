@@ -8,7 +8,9 @@ const DesktopNavigation = () => {
       <div className="container p-4 text-base h-full flex justify-between items-center">
         <ul className="flex items-center space-x-8">
           <li className="hover:opacity-75 ">
-            <Link href="/articles">Articles</Link>
+            <Link href="/articles" prefetch={false}>
+              Articles
+            </Link>
           </li>
           <li className="hover:opacity-75 ">
             <Link
@@ -20,7 +22,7 @@ const DesktopNavigation = () => {
             </Link>
           </li>
         </ul>
-        <Link href="/">
+        <Link href="/" aria-label="Home">
           <Logo />
         </Link>
         <ul className="flex space-x-8 items-center">
