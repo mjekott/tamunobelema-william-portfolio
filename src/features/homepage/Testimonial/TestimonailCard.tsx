@@ -42,9 +42,7 @@ const TestimonialCard = ({ item: testimonial }: Props) => {
               src={urlFor(testimonial.image).url()}
               alt="avatar"
               fill
-              sizes="(max-width: 768px) 100vw,
-            (max-width: 1200px) 50vw,
-            33vw"
+              sizes="(min-width: 1040px) 100px, 41px"
               className="object-cover grayscale"
             />
           </div>

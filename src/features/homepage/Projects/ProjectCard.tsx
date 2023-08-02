@@ -29,7 +29,7 @@ const ProjectCard = ({ item: project, index }: Props) => {
               blurDataURL={`data:image/svg+xml;base64,${toBase64(
                 shimmer(300, 530)
               )}`}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              sizes="(min-width: 1540px) 475px, (min-width: 1280px) 389px, (min-width: 1040px) 304px, (min-width: 780px) 348px, (min-width: 640px) 284px, (min-width: 400px) calc(100vw - 32px), (min-width: 340px) calc(50vw + 138px), calc(1160vw - 3424px)"
             />
           </div>
           <p className="mt-5 text-2xl ">{project?.title}</p>

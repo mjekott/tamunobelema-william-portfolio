@@ -15,10 +15,7 @@ const Footer = () => {
             height={264}
             width={264}
             alt="user-image"
-            sizes="(max-width: 768px) 264px,
-            (max-width: 1024px) 264px,
-            264px
-            "
+            sizes="(min-width: 1280px) 264px, (min-width: 1040px) 99px, (min-width: 780px) 137px, (min-width: 680px) 162px, calc(26.11vw - 10px)"
           />
         </div>
         <p className="font-semibold text-2xl md:text-4xl lg:text-7xl  max-w-[800px] ">
