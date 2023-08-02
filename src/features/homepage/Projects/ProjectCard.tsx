@@ -6,9 +6,10 @@ import { Project } from "../../../../types/Project";
 
 type Props = {
   item: Project;
+  index?: number;
 };
 
-const ProjectCard = ({ item: project }: Props) => {
+const ProjectCard = ({ item: project, index }: Props) => {
   return (
     <>
       <Link
@@ -24,6 +25,7 @@ const ProjectCard = ({ item: project }: Props) => {
               alt="feature-image"
               className="grayscale hover:grayscale-0 object-cover"
               placeholder="blur"
+              priority={index ? (index === 0 ? true : false) : false}
               blurDataURL={`data:image/svg+xml;base64,${toBase64(
                 shimmer(300, 530)
               )}`}

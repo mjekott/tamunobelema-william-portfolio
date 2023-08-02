@@ -53,6 +53,7 @@ const Sidebar = ({ articles = [] }: { articles: Article[] }) => {
             disabled={page === 0}
             onClick={() => setPage((prev) => prev - 1)}
             className={`icon-button w-7 h-7  `}
+            aria-label="Previous"
           >
             <ChevronLeftIcon className=" w-4 h-4 " />
           </button>
@@ -60,6 +61,7 @@ const Sidebar = ({ articles = [] }: { articles: Article[] }) => {
             disabled={disableNext}
             onClick={() => setPage((prev) => prev + 1)}
             className={`icon-button w-7 h-7  `}
+            aria-label="Next"
           >
             <ChevronRightIcon className=" w-4 h-4 " />
           </button>

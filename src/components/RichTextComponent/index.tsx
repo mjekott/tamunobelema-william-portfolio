@@ -16,6 +16,7 @@ const RichTextComponents = {
             alt={value.alt || "blog image"}
             fill
             placeholder="blur"
+            priority
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
               shimmer(435, 690)
             )}`}
