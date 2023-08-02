@@ -13,9 +13,9 @@ const Favicon = () => {
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     if (mediaQuery.matches) {
-      setFaviconHref("/favicon-dark.ico");
-    } else {
       setFaviconHref("/favicon-light.ico");
+    } else {
+      setFaviconHref("/favicon-dark.ico");
     }
   }, []);
 
