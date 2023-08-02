@@ -43,6 +43,7 @@ const ppMori = localFont({
 });
 
 export const metadata = {
+  metadataBase: new URL(siteConfig.host),
   title: {
     template: "%s | " + siteConfig.siteName,
     default: siteConfig.siteName,

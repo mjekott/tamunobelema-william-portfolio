@@ -26,7 +26,12 @@ const DesktopNavigation = () => {
         <ul className="flex space-x-8 items-center">
           {socialLinks.map(({ href, name, icon: Icon }) => (
             <li key={name} className="hover:opacity-75 cursor-pointer ">
-              <Link href={href} rel="noopener noreferrer" target="__blank">
+              <Link
+                href={href}
+                rel="noopener noreferrer"
+                target="__blank"
+                aria-label={name}
+              >
                 <Icon size={22} />
               </Link>
             </li>

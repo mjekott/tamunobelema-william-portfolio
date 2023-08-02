@@ -27,6 +27,7 @@ const ProjectCard = ({ item: project }: Props) => {
               blurDataURL={`data:image/svg+xml;base64,${toBase64(
                 shimmer(300, 530)
               )}`}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           <p className="mt-5 text-2xl ">{project?.title}</p>

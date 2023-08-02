@@ -111,6 +111,7 @@ const MobileNavigation = () => {
                   rel="noopener noreferrer"
                   target="__blank"
                   onClick={toggleNav}
+                  aria-label={name}
                 >
                   <Icon size={28} />
                 </Link>
