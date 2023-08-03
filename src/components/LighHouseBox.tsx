@@ -5,9 +5,9 @@ import {
   ChevronRightIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
-import { Spinner } from "@phosphor-icons/react";
 import Image from "next/image";
 import React, { useState } from "react";
+import { FadeLoader } from "react-spinners";
 import Modal from "./Modal";
 
 type LightBoxProps = {
@@ -83,7 +83,7 @@ const LightBox: React.FC<LightBoxProps> = ({
         <>
           {loading && (
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/90">
-              <Spinner className="animate-spin" size={24} />
+              <FadeLoader color="#fff" />
             </div>
           )}
           <Image

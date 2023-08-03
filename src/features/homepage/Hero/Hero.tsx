@@ -26,16 +26,16 @@ const services = [
 ];
 const Hero = () => {
   return (
-    <div className="relative min-h-[80vh]  lg:min-h-[70vh] mb-1 lg:mb-20">
-      <LeftBg className="absolute lg:h-[255px] lg:w-[232px] w-[70px] h-[132px]  lg:bottom-[10%] bottom-[20%] " />
+    <div className="relative min-h-[70vh]  lg:min-h-[70vh] mb-1 lg:mb-20">
+      <LeftBg className="absolute lg:h-[255px] lg:w-[232px] w-[70px] h-[132px]  lg:bottom-[10%] bottom-[10%] " />
       <RightBg className="absolute z-0 right-0 lg:h-[340px] lg:w-[400px] h-[200px] w-[120px] top-[1%]  lg:top-[10%]  " />
       <div className="container relative h-full z-10 p-4">
         <div className=" py-2 lg:py-10">
-          <p className="text-[2.25rem] leading-snug lg:text-[128px] lg:leading-[130px] font-semibold">
+          <p className="text-[2.75rem] leading-snug lg:text-[128px] lg:leading-[130px] font-semibold">
             Tamunobelema <br /> William - Design <br /> Storyteller.
           </p>
         </div>
-        <div className="justify-start pl-44 py-4 lg:justify-end  overflow-x-auto mt-5 lg:mt-0  flex-nowrap  gap-5 lg:gap-20  z-10  lg:py-28 flex">
+        <div className="justify-start pl-44 py-4 lg:justify-end  overflow-x-auto mt-14 mb-28 lg:mb-0 lg:mt-0  flex-nowrap  gap-5 lg:gap-20  z-10  lg:py-28 flex">
           {services.map((el, idx) => {
             return (
               <div key={el.heading} className="flex-shrink-0 ">

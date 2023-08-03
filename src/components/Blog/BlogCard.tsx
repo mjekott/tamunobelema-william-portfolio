@@ -11,16 +11,16 @@ const BlogCard = ({
 }: BlogCardProps) => {
   return (
     <Link href={`/articles/${slug}`}>
-      <article className="flex  gap-4  py-6 cursor-pointer items-start pr-3">
+      <article className="flex  gap-4  py-6 cursor-pointer items-start pr-3 hover:text-[#B3B3B6]">
         <Image
           src={thumbnail ?? userImage}
           className="grayscale"
           height={50}
           width={50}
           alt="user-image"
-          sizes="(max-width: 768px) 264px,
-            (max-width: 1024px) 264px,
-            264px
+          sizes="(max-width: 768px) 50px,
+            (max-width: 1024px) 50px,
+            50px
             "
         />
         <div>
