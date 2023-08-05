@@ -37,8 +37,8 @@ const Modal = ({
   return createPortal(
     <motion.div
       key="hello"
-      initial={{ y: "100%" }}
-      animate={{ y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{
         duration: 0.3,
       }}
