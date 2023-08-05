@@ -86,7 +86,8 @@ const LightBox: React.FC<LightBoxProps> = ({
             className="object-cover grayscale hover:grayscale-0 h-auto w-auto"
             src={imageToShow}
             onClick={(e: any) => e.stopPropagation()}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 70vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 600px, 600px"
+            priority
           />
         </>
       )}
