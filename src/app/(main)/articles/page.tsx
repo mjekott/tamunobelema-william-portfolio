@@ -7,7 +7,7 @@ export const metadata = {
   title: "Articles",
 };
 
-export const revalidate = 60;
+export const revalidate = 600;
 
 const page = async () => {
   const articles = await getAllArticles({ offset: 0 });

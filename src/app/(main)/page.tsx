@@ -5,7 +5,7 @@ import Projects from "@/features/homepage/Projects";
 import Testimonials from "@/features/homepage/Testimonial";
 import { getHomePage } from "../../../sanity/sanity-utils";
 
-export const revalidate = 60;
+export const revalidate = 600;
 
 const page = async () => {
   try {

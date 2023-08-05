@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 import { getAllArticles } from "../../../../sanity/sanity-utils";
 import Sidebar from "./Sidebar";
 
+export const revalidate = 600;
+
 const layout = async ({ children }: { children: ReactNode }) => {
   const articles = await getAllArticles({ offset: 0 });
   return (

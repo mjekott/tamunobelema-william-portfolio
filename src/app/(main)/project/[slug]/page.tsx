@@ -51,7 +51,7 @@ export const generateStaticParams = async () => {
   }
 };
 
-export const revalidate = 300;
+export const revalidate = 600;
 
 const page = async ({ params }: { params: { slug: string } }) => {
   const project = await getProject(params.slug);
