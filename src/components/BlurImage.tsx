@@ -1,15 +1,14 @@
 "use client";
 import { cn } from "@/utils/cn";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import { useState } from "react";
 
-function BlurImage({ src, className, ...props }: any) {
+function BlurImage({ src, className, alt, ...props }: ImageProps) {
   const [isLoading, setLoading] = useState(true);
 
   return (
     <Image
-      alt="photo"
-      {...props}
+      alt={alt}
       src={src}
       className={cn(
         "duration-700 ease-in-out",
@@ -17,6 +16,7 @@ function BlurImage({ src, className, ...props }: any) {
         isLoading ? "grayscale blur-2xl scale-105" : ""
       )}
       onLoadingComplete={() => setLoading(false)}
+      {...props}
     />
   );
 }

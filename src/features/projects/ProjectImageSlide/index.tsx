@@ -86,6 +86,7 @@ const ProjectImageCard = ({ image, onClick }: ProjectImageCardProps) => {
         alt="other images"
         className="duration-700 grayscale hover:grayscale-0 object-cover cursor-pointer ease-in-out"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        priority
       />
     </div>
   );
