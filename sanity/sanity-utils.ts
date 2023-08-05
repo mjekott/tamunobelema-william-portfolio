@@ -25,12 +25,7 @@ export async function getProject(slug: string): Promise<IProjectDetails> {
         "current": { 
           "slug": slug.current,description,title,images,'mainImage':mainImage.asset->url,publishedAt
         },
-        "previous": *[_type == 'project' && ^.publishedAt > publishedAt]|order(publishedAt desc)[0]{ 
-            "slug": slug.current, 
-        },
-        "next": *[_type == 'project' && ^.publishedAt < publishedAt]|order(publishedAt asc)[0]{ 
-            "slug": slug.current,
-        }}[0]`,
+       }[0]`,
     { slug }
   );
   return results;

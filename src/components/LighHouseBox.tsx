@@ -20,7 +20,6 @@ const LightBox: React.FC<LightBoxProps> = ({
   hideLightBox,
 }) => {
   const [imageToShow, setImageToShow] = useState(displayImage);
-  const [loading, setLoading] = useState(true);
 
   const showNext = (e: any) => {
     e.stopPropagation();
@@ -40,10 +39,6 @@ const LightBox: React.FC<LightBoxProps> = ({
     }
     const prevImage = images[currentIndex - 1];
     setImageToShow(prevImage);
-  };
-
-  const handleImageLoad = () => {
-    setLoading(false);
   };
 
   const currentIndex = images.indexOf(imageToShow);
