@@ -1,13 +1,11 @@
 "use client";
-import { shimmer, toBase64 } from "@/utils/image";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
-import Image from "next/image";
 import React, { useState } from "react";
-import { FadeLoader } from "react-spinners";
+import BlurImage from "./BlurImage";
 import Modal from "./Modal";
 
 type LightBoxProps = {
@@ -81,25 +79,13 @@ const LightBox: React.FC<LightBoxProps> = ({
       </button>
       {imageToShow && (
         <>
-          {loading && (
-            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/90">
-              <FadeLoader color="#fff" />
-            </div>
-          )}
-          <Image
+          <BlurImage
             width={435}
             height={690}
             alt="lightbox-image"
-            className="object-cover h-auto w-auto"
+            className="object-cover grayscale hover:grayscale-0 h-auto w-auto"
             src={imageToShow}
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer(435, 690)
-            )}`}
-            loading={loading ? "eager" : "lazy"} // Show the loader until the image is fully loaded
-            onLoad={() => setLoading(false)} // Set loading to false when the image is fully loaded
-            onLoadingComplete={() => setLoading(false)} // Set loading to false when the image has been loaded (added this line)
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: any) => e.stopPropagation()}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 70vw"
           />
         </>

@@ -1,8 +1,7 @@
 "use client";
+import BlurImage from "@/components/BlurImage";
 import Lightbox from "@/components/LighHouseBox";
 import { SwiperNavButtons } from "@/components/SwiperNav";
-import { shimmer, toBase64 } from "@/utils/image";
-import Image from "next/image";
 import { useState } from "react";
 import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -80,14 +79,12 @@ export default ProjectImageSlide;
 const ProjectImageCard = ({ image, onClick }: ProjectImageCardProps) => {
   return (
     <div className="relative lg:h-[530px] h-[269px]">
-      <Image
+      <BlurImage
         onClick={onClick}
         src={image}
         fill
         alt="other images"
-        className="grayscale hover:grayscale-0 object-cover cursor-pointer"
-        placeholder="blur"
-        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(300, 530))}`}
+        className="duration-700 grayscale hover:grayscale-0 object-cover cursor-pointer ease-in-out"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
     </div>

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import userImage from "../../assets/images/userImage.png";
+import BlurImage from "../BlurImage";
 
 const BlogCard = ({
   title,
@@ -12,9 +12,9 @@ const BlogCard = ({
   return (
     <Link href={`/articles/${slug}`}>
       <article className="flex  gap-4  py-6 cursor-pointer items-start pr-3 hover:text-[#B3B3B6]">
-        <Image
+        <BlurImage
           src={thumbnail ?? userImage}
-          className="grayscale"
+          className="grayscale hover:grayscale-0"
           height={50}
           width={50}
           alt="user-image"

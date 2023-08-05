@@ -27,6 +27,7 @@
     "framer-motion": "^10.11.5",
     "next": "13.4.4",
     "next-sanity": "^4.1.6",
+    "plaiceholder": "^3.0.0",
     "postcss": "8.4.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
