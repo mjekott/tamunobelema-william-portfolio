@@ -1,20 +1,28 @@
+"use client";
 import BlurImage from "@/components/BlurImage";
+import { useProjectContext } from "@/context/ProjectContext";
 import Link from "next/link";
 import urlFor from "../../../../sanity/config/urlFor";
 import { Project } from "../../../../types/Project";
 
 type Props = {
   item: Project;
-  index?: number;
 };
 
-const ProjectCard = ({ item: project, index }: Props) => {
+const ProjectCard = ({ item: project }: Props) => {
+  const { addProject } = useProjectContext();
+  const handleClick = () => {
+    addProject(project);
+  };
   return (
     <>
       <Link
         href={`/project/${project.slug}`}
         className="cursor-pointer h-full "
         prefetch={false}
+        onClick={() => {
+          handleClick();
+        }}
       >
         <div className="flex flex-col h-full">
           <div className="relative lg:h-[530px] h-[269px]">

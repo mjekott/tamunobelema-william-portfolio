@@ -45,7 +45,7 @@ const Projects = ({ projects }: ProjectsProps) => {
         </div>
         {projects.map((item, index) => (
           <SwiperSlide key={index} className="h-full">
-            <ProjectCard item={item} index={index} />
+            <ProjectCard item={item} />
           </SwiperSlide>
         ))}
       </Swiper>

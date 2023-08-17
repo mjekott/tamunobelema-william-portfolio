@@ -13,7 +13,7 @@ function BlurImage({ src, className, alt, ...props }: ImageProps) {
       className={cn(
         "duration-700 ease-in-out",
         className,
-        isLoading ? "grayscale blur-2xl scale-105" : ""
+        isLoading ? "grayscale blur-2xl" : ""
       )}
       onLoadingComplete={() => setLoading(false)}
       {...props}
