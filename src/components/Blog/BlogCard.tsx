@@ -17,11 +17,8 @@ const BlogCard = ({
           className="grayscale hover:grayscale-0"
           height={50}
           width={50}
-          alt="user-image"
-          sizes="(max-width: 768px) 50px,
-            (max-width: 1024px) 50px,
-            50px
-            "
+          alt="user-image w-[50px] h-[50px]"
+          sizes="100vw"
         />
         <div>
           <h2

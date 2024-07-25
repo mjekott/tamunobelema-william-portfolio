@@ -1,4 +1,3 @@
-import Favicon from "@/components/Favicon";
 import Loader from "@/components/Loader";
 import { siteConfig } from "@/config/site";
 import localFont from "next/font/local";
@@ -48,6 +47,18 @@ export const metadata = {
     template: "%s | " + siteConfig.siteName,
     default: siteConfig.siteName,
   },
+  icons: [
+    {
+      media: "(prefers-color-scheme: light)",
+      url: "/favicon-light.ico",
+      href: "/favicon-light.ico",
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      url: "/favicon-dark.ico",
+      href: "/favicon-dark.ico",
+    },
+  ],
   description: siteConfig.description,
   openGraph: {
     title: siteConfig.siteName,
@@ -81,7 +92,6 @@ export default function RootLayout({
           {children} {modal}
         </Provider>
         <Loader />
-        <Favicon />
       </body>
     </html>
   );
