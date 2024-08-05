@@ -1,5 +1,6 @@
 import Loader from "@/components/Loader";
 import { siteConfig } from "@/config/site";
+import { Viewport } from "next";
 import localFont from "next/font/local";
 import { ReactNode } from "react";
 import "swiper/swiper.min.css";
@@ -75,6 +76,9 @@ export const metadata = {
     locale: "en",
     type: "website",
   },
+};
+
+export const viewport: Viewport = {
   themeColor: [{ media: "(prefers-color-scheme: light)", color: "white" }],
 };
 

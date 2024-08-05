@@ -1,5 +1,5 @@
 "use client";
-import Modal from "@/components/Modal";
+import CustomModal from "@/components/Modal";
 import { useProjectContext } from "@/context/ProjectContext";
 import ProjectImageSlide from "@/features/projects/ProjectImageSlide";
 import BackButton from "@/layout/BackButton";
@@ -15,7 +15,7 @@ const ProjectModal = () => {
   }, [onClose]);
 
   return (
-    <Modal>
+    <CustomModal>
       <div className="h-full w-full pb-20 relative">
         <BackButton />
         {project && (
@@ -41,7 +41,7 @@ const ProjectModal = () => {
           </div>
         )}
       </div>
-    </Modal>
+    </CustomModal>
   );
 };
 

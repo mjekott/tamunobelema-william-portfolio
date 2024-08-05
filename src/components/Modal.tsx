@@ -2,30 +2,26 @@
 
 import { cn } from "@/utils/cn";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-const Modal = ({
+const CustomModal = ({
   children,
   className,
   onClick,
   isOpen = true,
   disableBodyLock = true,
-}: ModalProps) => {
+}: ModalProps): React.ReactPortal | null | any => {
   const [modalOpen, setModalOpen] = useState(isOpen);
 
   useEffect(() => {
-    const handleScroll = (event: any) => {
-      if (modalOpen) {
-        event.preventDefault();
-      }
-    };
+    setModalOpen(isOpen);
+  }, [isOpen]);
 
-    // Add the event listener to disable body scroll when the modal is open
+  useEffect(() => {
     if (disableBodyLock) {
       document.body.style.overflow = modalOpen ? "hidden" : "auto";
 
-      // Remove the event listener when the modal is closed
       return () => {
         document.body.style.overflow = "auto";
       };
@@ -33,6 +29,12 @@ const Modal = ({
   }, [disableBodyLock, modalOpen]);
 
   if (!modalOpen) return null;
+
+  const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget && onClick) {
+      onClick(e);
+    }
+  };
 
   return createPortal(
     <motion.div
@@ -43,10 +45,10 @@ const Modal = ({
         duration: 0.3,
       }}
       className={cn(
-        "bg-[#111111] overflow-y-auto   inset-0 fixed h-full w-full z-50 min-h-screen",
+        "bg-[#111111] overflow-y-auto inset-0 fixed h-full w-full z-50 min-h-screen",
         className
       )}
-      onClick={onClick}
+      onClick={handleModalClick}
     >
       {children}
     </motion.div>,
@@ -54,12 +56,12 @@ const Modal = ({
   );
 };
 
-export default Modal;
+export default CustomModal;
 
-type ModalProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
-> & {
+type ModalProps = {
+  children: ReactNode;
+  className?: string;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
   isOpen?: boolean;
   disableBodyLock?: boolean;
 };
